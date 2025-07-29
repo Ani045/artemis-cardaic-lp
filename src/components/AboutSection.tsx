@@ -3,7 +3,7 @@ import { Award, Users, Globe, Heart } from 'lucide-react';
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-soft-beige">
+    <section className="py-8 bg-soft-beige">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-rich-chocolate mb-6">

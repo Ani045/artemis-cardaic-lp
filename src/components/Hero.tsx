@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ArrowRight, Play, Star, Shield, Phone, Calendar } from 'lucide-react';
 
@@ -172,8 +173,7 @@ const Hero = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsSubmitting(true);
 
     try {
@@ -233,20 +233,29 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-white space-y-6">
+          <div className="text-white space-y-6 col-span-full lg:col-span-1">
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-amber-500/30 rounded-full px-4 py-2">
               <Shield className="w-4 h-4 text-amber-400" />
               <span className="text-amber-400 font-medium text-sm">JCI Accredited • 25+ Years Excellence</span>
             </div>
 
-            {/* Headline */}
+            {/* Headline - Different for Mobile and Desktop */}
             <div>
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-4">
+              {/* Mobile Heading */}
+              <h1 className="text-3xl font-bold leading-tight mb-4 lg:hidden">
+                Best Hospital for{' '}
+                <span className="text-amber-400">Cancer Treatment</span>
+                <br />in India
+              </h1>
+              
+              {/* Desktop Heading */}
+              <h1 className="hidden lg:block text-4xl lg:text-5xl font-bold leading-tight mb-4">
                 Discover World-Class{' '}
                 <span className="text-amber-400">Cancer Care</span>
                 <br />at Artemis Hospitals
               </h1>
+              
               <p className="text-white/90 text-lg max-w-lg leading-relaxed mb-6">
                 Comprehensive Multidisciplinary Cancer Care with State-of-the-Art Technology
               </p>
@@ -272,28 +281,39 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-2xl font-bold text-amber-400">500+</div>
-                <div className="text-white/80 text-sm">Beds</div>
+            {/* Stats - Mobile shows only one stat, Desktop shows all four */}
+            <div className="mb-8">
+              {/* Mobile Stats - Single Stat */}
+              <div className="lg:hidden flex justify-center">
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 w-64">
+                  <div className="text-3xl font-bold text-amber-400">3,00,000+</div>
+                  <div className="text-white/80 text-sm">Cancer Patients Treated</div>
+                </div>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-2xl font-bold text-amber-400">70+</div>
-                <div className="text-white/80 text-sm">Countries</div>
-              </div>
-              <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-2xl font-bold text-amber-400">400+</div>
-                <div className="text-white/80 text-sm">Doctors</div>
-              </div>
-              <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                <div className="text-2xl font-bold text-amber-400">40+</div>
-                <div className="text-white/80 text-sm">Super Specialties</div>
+              
+              {/* Desktop Stats - All Four Stats */}
+              <div className="hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">500+</div>
+                  <div className="text-white/80 text-sm">Beds</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">70+</div>
+                  <div className="text-white/80 text-sm">Countries</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">400+</div>
+                  <div className="text-white/80 text-sm">Doctors</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">40+</div>
+                  <div className="text-white/80 text-sm">Super Specialties</div>
+                </div>
               </div>
             </div>
 
-            {/* CTA Button */}
-            <div className="mb-8">
+            {/* CTA Button - Show on desktop, hide on mobile since form is hidden */}
+            <div className="mb-8 hidden lg:block">
               <button 
                 onClick={handleConsultationClick}
                 className="bg-amber-500 text-amber-900 px-8 py-4 rounded-lg font-semibold hover:bg-amber-400 transition-colors flex items-center space-x-2 shadow-lg"
@@ -304,8 +324,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-amber-500/20 w-full max-w-md mx-auto">
+          {/* Right Side - Contact Form (Hidden on Mobile) */}
+          <div className="hidden lg:block bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-amber-500/20 w-full max-w-md mx-auto">
             <div id="hero-contact-form">
               <div className="text-center mb-6">
                 <div className="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -319,7 +339,7 @@ const Hero = () => {
                 </p>
               </div>
 
-            <form accept-charset='UTF-8' action='https://app.formester.com/forms/74CaRVAvR/submissions' method='POST' className="space-y-4">
+              <form accept-charset='UTF-8' action='https://app.formester.com/forms/74CaRVAvR/submissions' method='POST' className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-amber-800 mb-1">

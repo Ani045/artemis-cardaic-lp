@@ -19,7 +19,7 @@ const JourneySection = () => {
       icon: <Heart className="w-8 h-8" />,
       title: 'Right Doctor, Right Care',
       description: 'At Artemis Hospitals, we attract a diverse international patient population seeking world-class cancer care from our highly qualified oncologists. Equipped with cutting-edge technology and utilizing a multidisciplinary approach, we ensure the highest standard of care for every patient.',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80'
+      image: 'artemis-image.png'
     }
   ];
 

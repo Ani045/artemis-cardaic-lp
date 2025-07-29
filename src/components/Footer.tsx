@@ -8,10 +8,10 @@ const Footer = () => {
       const openConsultationPopup = () => setIsConsultationPopupOpen(true);
     const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   return (
-    <footer className="bg-rich-chocolate text-cream-white py-16">
+    <footer className="bg-rich-chocolate text-cream-white py-4">
       <div className="container mx-auto px-6">
         {/* Main CTA Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-6">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             SKIP THE WAITING ROOM – REGISTER ONLINE!
           </h2>
@@ -30,10 +30,10 @@ const Footer = () => {
        
        
         {/* Bottom Footer */}
-        <div className="border-t border-cream-white/20 pt-8">
+        <div className="border-t border-cream-white/20 pt-2 ">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-cream-white/60 mb-4 md:mb-0">
-              © 2024 Artemis Hospital. All rights reserved. | JCI Accredited Healthcare Provider
+              © 2025 Artemis Hospital. All rights reserved. | JCI Accredited Healthcare Provider
             </div>
             {/* <div className="flex items-center space-x-1 text-cream-white/60">
               <Heart className="w-4 h-4 text-golden-honey" />

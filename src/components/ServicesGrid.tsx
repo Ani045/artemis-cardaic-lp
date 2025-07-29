@@ -29,10 +29,11 @@ const ServicesGrid = () => {
     },
     {
       icon: <Heart className="w-6 h-6" />,
-      title: 'Gynecological Oncology',
-      description: 'Comprehensive treatment for ovarian, cervical, and other gynecological cancers.',
-      features: ['Ovarian Cancers', 'Cervical Cancers']
+      title: 'Breast Cancer',
+      description: 'Comprehensive care and treatment for all stages of breast cancer.',
+      features: ['Early Detection', 'Advanced Therapies']
     },
+    
     {
       icon: <Zap className="w-6 h-6" />,
       title: 'Radiation Oncology for Tumors',
@@ -84,14 +85,14 @@ const ServicesGrid = () => {
   ];
 
   return (
-    <section id="services" className="py-16 bg-soft-beige">
+    <section id="services" className="py-8 bg-soft-beige">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-rich-chocolate mb-4">
-            Our Oncology Surgery Services
+          Our Cancer Treatment Services
           </h2>
           <p className="text-coffee-bean max-w-3xl mx-auto text-lg">
-            Comprehensive oncology services with advanced surgical techniques and personalized treatment approaches.
+          We have wide range of Cancer Treatments with the best team of cancer doctors in India
           </p>
         </div>
 

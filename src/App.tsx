@@ -9,6 +9,7 @@ import DoctorProfiles from './components/DoctorProfiles';
 import Testimonials from './components/Testimonials';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
+import MobileFooter from './components/MobileFooter';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Testimonials />
       <FAQSection />
       <Footer />
+      <MobileFooter />
     </div>
   );
 }
