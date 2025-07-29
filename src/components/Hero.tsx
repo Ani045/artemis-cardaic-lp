@@ -224,7 +224,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(public/Artemis.webp)'
+          backgroundImage: 'url(Artemis.webp)'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-black/30"></div>

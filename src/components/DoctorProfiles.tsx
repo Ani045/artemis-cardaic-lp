@@ -8,28 +8,28 @@ const DoctorProfiles = () => {
       specialization: 'Senior Consultant, Medical Oncology',
       qualifications: 'MBBS, MD, DM (Medical Oncology)',
       expertise: 'Specializes in immunotherapy, targeted therapy, and hematological malignancies.',
-      image: 'public/Dr. Mukesh-Patekar.png'
+      image: 'Dr. Mukesh-Patekar.png'
     },
     {
       name: 'Dr. Priya Tiwari',
       specialization: 'Consultant, Medical Oncology',
       qualifications: 'MBBS, MD, DM (Medical Oncology)',
       expertise: 'Expertise in breast, lung, gastrointestinal, and gynecological cancers.',
-      image: 'public/Dr. Priya-Tiwari.png'
+      image: 'Dr. Priya-Tiwari.png'
     },
     {
       name: 'Dr. Biswajyoti Hazarika',
       specialization: 'Director, Surgical Oncology',
       qualifications: 'MBBS, MS (ENT), MCh (Head & Neck Surgery)',
       expertise: 'Specialist in head and neck cancer surgeries, including robotic and reconstructive procedures.',
-      image: 'public/Dr. Hazarika.png'
+      image: 'Dr. Hazarika.png'
     },
     {
       name: 'Dr. Parveen Yadav',
       specialization: 'Consultant, Thoracic Oncology',
       qualifications: 'MBBS, MS, MCh (Thoracic Surgery)',
       expertise: 'Expert in minimally invasive thoracic and esophageal surgeries.',
-      image: 'public/Dr. Parveen-Yadav.png'
+      image: 'Dr. Parveen-Yadav.png'
     }
   ];
 

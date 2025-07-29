@@ -19,7 +19,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img className='w-40 h-30' src='public/artemis-logo.png'></img>
+            <img className='w-40 h-30' src='artemis-logo.png'></img>
           </div>
 
           {/* Desktop Navigation */}

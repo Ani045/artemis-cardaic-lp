@@ -39,10 +39,10 @@ const Footer = () => {
             <div className="text-cream-white/60 mb-4 md:mb-0">
               © 2024 Artemis Hospital. All rights reserved. | JCI Accredited Healthcare Provider
             </div>
-            <div className="flex items-center space-x-1 text-cream-white/60">
+            {/* <div className="flex items-center space-x-1 text-cream-white/60">
               <Heart className="w-4 h-4 text-golden-honey" />
               <span>Made with care in India</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

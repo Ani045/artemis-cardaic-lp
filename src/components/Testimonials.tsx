@@ -11,14 +11,14 @@ const Testimonials = () => {
       name: '69-year-old, Mrs. Maria Munjanja',
       location: 'Zimbabwe',
       description: 'She underwent a life-changing bone marrow transplant to combat multiple myeloma. Witness her triumphant journey to renewed health!',
-      image: 'public/unnamed.webp'
+      image: 'unnamed.webp'
     },
     {
       title: "Mary's Breakthrough",
       name: 'Master Emmanuel Kenyi',
       location: 'South Sudan',
       description: '13-year struggle through a life-saving bone marrow transplant at Artemis Hospital.',
-      image: 'public/unnamed (1).webp'
+      image: 'unnamed (1).webp'
     },
     // {
     //   title: "David's Testimonial",
@@ -39,7 +39,7 @@ const Testimonials = () => {
       name: 'Patient Success Story',
       location: 'International Patient',
       description: 'Another inspiring journey of recovery and hope through world-class oncology care at Artemis Hospital.',
-      image: 'public/Int-Patients.webp'
+      image: 'Int-Patients.webp'
     }
   ];
 
