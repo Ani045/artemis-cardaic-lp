@@ -1,7 +1,13 @@
 import React from 'react';
+import { useState } from 'react'; 
 import { Heart, Zap, Stethoscope, Brain, Shield, Activity } from 'lucide-react';
+import ConsultationPopup from './ConsultationPopup';
 
 const ServicesGrid = () => {
+    const [isConsultationPopupOpen, setIsConsultationPopupOpen] = useState(false);
+  
+    const openConsultationPopup = () => setIsConsultationPopupOpen(true);
+  const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   const services = [
     {
       icon: <Stethoscope className="w-6 h-6" />,
@@ -119,22 +125,17 @@ const ServicesGrid = () => {
         
         <div className="text-center mt-12">
           <button 
-            onClick={() => {
-              const heroForm = document.querySelector('#hero-contact-form');
-              if (heroForm) {
-                heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => {
-                  const firstInput = heroForm.querySelector('input');
-                  if (firstInput) firstInput.focus();
-                }, 500);
-              }
-            }}
+             onClick={openConsultationPopup}
             className="bg-golden-honey text-rich-chocolate px-8 py-4 rounded-lg font-semibold hover:bg-deep-copper transition-colors shadow-lg"
           >
             Schedule Your Appointment Today!
           </button>
         </div>
       </div>
+      <ConsultationPopup 
+  isOpen={isConsultationPopupOpen}
+  onClose={closeConsultationPopup}
+/>
     </section>
   );
 };

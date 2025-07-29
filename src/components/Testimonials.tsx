@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import ConsultationPopup from './ConsultationPopup';
 
 const Testimonials = () => {
+   const [isConsultationPopupOpen, setIsConsultationPopupOpen] = useState(false);
+    
+      const openConsultationPopup = () => setIsConsultationPopupOpen(true);
+    const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const testimonials = [
@@ -133,16 +138,7 @@ const Testimonials = () => {
               Get ready to be inspired as we honor the strength and courage of remarkable cancer survivors.
             </p>
             <button 
-              onClick={() => {
-                const heroForm = document.querySelector('#hero-contact-form');
-                if (heroForm) {
-                  heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  setTimeout(() => {
-                    const firstInput = heroForm.querySelector('input');
-                    if (firstInput) firstInput.focus();
-                  }, 500);
-                }
-              }}
+               onClick={openConsultationPopup}
               className="bg-golden-honey text-rich-chocolate px-8 py-4 rounded-lg font-semibold hover:bg-deep-copper transition-colors shadow-lg"
             >
               Start Your Journey Today
@@ -150,6 +146,10 @@ const Testimonials = () => {
           </div>
         </div>
       </div>
+      <ConsultationPopup 
+  isOpen={isConsultationPopupOpen}
+  onClose={closeConsultationPopup}
+/>
     </section>
   );
 };

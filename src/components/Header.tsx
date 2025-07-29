@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Calendar } from 'lucide-react';
+import ConsultationPopup from './ConsultationPopup';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isConsultationPopupOpen, setIsConsultationPopupOpen] = useState(false);
+
+  const openConsultationPopup = () => setIsConsultationPopupOpen(true);
+const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,16 +47,8 @@ const Header = () => {
               <span className="text-sm font-medium">Emergency</span>
             </button> */}
             <button 
-              onClick={() => {
-                          const heroForm = document.querySelector('#hero-contact-form');
-                          if (heroForm) {
-                            heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            setTimeout(() => {
-                              const firstInput = heroForm.querySelector('input');
-                              if (firstInput) firstInput.focus();
-                            }, 500);
-                          }
-                        }} className="bg-golden-honey text-rich-chocolate px-4 py-2 rounded-lg text-sm font-medium hover:bg-deep-copper transition-colors">
+            onClick={openConsultationPopup}
+              className="bg-golden-honey text-rich-chocolate px-4 py-2 rounded-lg text-sm font-medium hover:bg-deep-copper transition-colors">
               Book Consultation
             </button>
           </div>
@@ -82,16 +79,7 @@ const Header = () => {
               <div className="pt-3 border-t border-caramel/20">
                 <button 
                   className="w-full bg-golden-honey text-rich-chocolate px-4 py-2 rounded-lg text-sm font-medium"
-                  onClick={() => {
-                    const heroForm = document.querySelector('#hero-contact-form');
-                    if (heroForm) {
-                      heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      setTimeout(() => {
-                        const firstInput = heroForm.querySelector('input');
-                        if (firstInput) firstInput.focus();
-                      }, 500);
-                    }
-                  }}
+                  onClick={openConsultationPopup}
                 >
                   Book Consultation
                 </button>
@@ -100,6 +88,10 @@ const Header = () => {
           </div>
         )}
       </div>
+      <ConsultationPopup 
+  isOpen={isConsultationPopupOpen}
+  onClose={closeConsultationPopup}
+/>
     </header>
   );
 };

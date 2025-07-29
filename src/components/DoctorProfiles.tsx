@@ -1,7 +1,13 @@
 import React from 'react';
 import { Star, Calendar, Award, Clock } from 'lucide-react';
+import { useState } from 'react';
+import ConsultationPopup from './ConsultationPopup';
 
 const DoctorProfiles = () => {
+    const [isConsultationPopupOpen, setIsConsultationPopupOpen] = useState(false);
+  
+    const openConsultationPopup = () => setIsConsultationPopupOpen(true);
+  const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   const doctors = [
     {
       name: 'Dr. Mukesh Patekar',
@@ -80,16 +86,7 @@ const DoctorProfiles = () => {
   <span className="whitespace-nowrap">Chat on WhatsApp</span>
 </a>
                       <button 
-                        onClick={() => {
-                          const heroForm = document.querySelector('#hero-contact-form');
-                          if (heroForm) {
-                            heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            setTimeout(() => {
-                              const firstInput = heroForm.querySelector('input');
-                              if (firstInput) firstInput.focus();
-                            }, 500);
-                          }
-                        }}
+                         onClick={openConsultationPopup}
                         className="w-full sm:w-auto bg-amber-500 text-amber-900 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-amber-400 transition-colors flex items-center justify-center space-x-2"
                       >
                         <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -103,6 +100,10 @@ const DoctorProfiles = () => {
           ))}
         </div>
       </div>
+      <ConsultationPopup 
+  isOpen={isConsultationPopupOpen}
+  onClose={closeConsultationPopup}
+/>
     </section>
   );
 };

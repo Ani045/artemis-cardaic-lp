@@ -1,7 +1,12 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { Phone, Mail, MapPin, Heart, Award, Shield, Facebook, Twitter, Instagram } from 'lucide-react';
+import ConsultationPopup from './ConsultationPopup';
 
 const Footer = () => {
+   const [isConsultationPopupOpen, setIsConsultationPopupOpen] = useState(false);
+    
+      const openConsultationPopup = () => setIsConsultationPopupOpen(true);
+    const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   return (
     <footer className="bg-rich-chocolate text-cream-white py-16">
       <div className="container mx-auto px-6">
@@ -14,16 +19,7 @@ const Footer = () => {
             Save time and avoid the hassle by registering online before your visit.
           </p>
           <button 
-            onClick={() => {
-              const heroForm = document.querySelector('#hero-contact-form');
-              if (heroForm) {
-                heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => {
-                  const firstInput = heroForm.querySelector('input');
-                  if (firstInput) firstInput.focus();
-                }, 500);
-              }
-            }}
+             onClick={openConsultationPopup}
             className="bg-golden-honey text-rich-chocolate px-12 py-4 rounded-lg text-xl font-bold hover:bg-deep-copper transition-all transform hover:scale-105 shadow-lg"
           >
             Book An Appointment
@@ -46,6 +42,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <ConsultationPopup 
+  isOpen={isConsultationPopupOpen}
+  onClose={closeConsultationPopup}
+/>
     </footer>
   );
 };
