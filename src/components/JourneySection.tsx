@@ -6,7 +6,7 @@ const JourneySection = () => {
     {
       icon: <FileText className="w-8 h-8" />,
       title: 'Visa Process',
-      description: 'Our experts help you in getting a medical visa which makes the process easier for international patients. We manage the visa papers and quicken the process for patients who are seeking cancer treatment overseas and this helps in reducing the waiting period to commence your care.',
+      description: 'Our experts help you in getting a medical visa which makes the process easier for international patients. We manage the visa papers and quicken the process for patients who are seeking cardiac treatment overseas and this helps in reducing the waiting period to commence your care.',
       image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
@@ -18,7 +18,7 @@ const JourneySection = () => {
     {
       icon: <Heart className="w-8 h-8" />,
       title: 'Right Doctor, Right Care',
-      description: 'At Artemis Hospitals, we attract a diverse international patient population seeking world-class cancer care from our highly qualified oncologists. Equipped with cutting-edge technology and utilizing a multidisciplinary approach, we ensure the highest standard of care for every patient.',
+      description: 'At Artemis Hospitals, we attract a diverse international patient population seeking world-class cardiac care from our highly qualified oncologists. Equipped with cutting-edge technology and utilizing a multidisciplinary approach, we ensure the highest standard of care for every patient.',
       image: 'artemis-image.png'
     }
   ];
@@ -99,7 +99,7 @@ const JourneySection = () => {
                 <span className="text-rich-chocolate font-bold">3</span>
               </div>
               <h4 className="font-semibold text-rich-chocolate mb-2">Treatment Phase</h4>
-              <p className="text-coffee-bean text-sm">Comprehensive cancer care and support</p>
+              <p className="text-coffee-bean text-sm">Comprehensive cardiac care and support</p>
             </div>
             <div className="hidden md:block w-16 h-0.5 bg-golden-honey"></div>
             <div className="flex flex-col items-center text-center">

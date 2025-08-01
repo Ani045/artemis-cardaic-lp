@@ -10,34 +10,42 @@ const DoctorProfiles = () => {
   const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   const doctors = [
     {
-      name: 'Dr. Mukesh Patekar',
-      specialization: 'Senior Consultant, Medical Oncology',
-      qualifications: 'MBBS, MD, DM (Medical Oncology)',
-      expertise: 'Specializes in immunotherapy, targeted therapy, and hematological malignancies.',
-      image: 'Dr. Mukesh-Patekar.png'
+      name: 'Dr. Sushant Srivastava',
+      specialization: 'Chairperson, Adult Cardiac Surgery & Heart Lung Transplant',
+      qualifications: '',
+      expertise: '',
+      image: 'Sus.webp'
     },
     {
-      name: 'Dr. Priya Tiwari',
-      specialization: 'Consultant, Medical Oncology',
-      qualifications: 'MBBS, MD, DM (Medical Oncology)',
-      expertise: 'Expertise in breast, lung, gastrointestinal, and gynecological cancers.',
-      image: 'Dr. Priya-Tiwari.png'
+      name: 'Dr. Kuldeep Arora',
+      specialization: 'Unit Head & Chief Cath Lab (Unit II)',
+      qualifications: '',
+      expertise: '',
+      image: 'Kul.webp'
     },
     {
-      name: 'Dr. Biswajyoti Hazarika',
-      specialization: 'Director, Surgical Oncology',
-      qualifications: 'MBBS, MS (ENT), MCh (Head & Neck Surgery)',
-      expertise: 'Specialist in head and neck cancer surgeries, including robotic and reconstructive procedures.',
-      image: 'Dr. Hazarika.png'
+      name: 'Dr. Sameer Mehrotra',
+      specialization: 'Unit Chief, Electrophysiology and Chief Cath Lab (Unit III)',
+      qualifications: '',
+      expertise: '',
+      image: 'Sameer.webp'
     },
     {
-      name: 'Dr. Parveen Yadav',
-      specialization: 'Consultant, Thoracic Oncology',
-      qualifications: 'MBBS, MS, MCh (Thoracic Surgery)',
-      expertise: 'Expert in minimally invasive thoracic and esophageal surgeries.',
-      image: 'Dr. Parveen-Yadav.png'
+      name: 'Dr. Rahul Mehrotra',
+      specialization: 'Chief, NIC & Clinical Cardiology (Unit IV)',
+      qualifications: '',
+      expertise: '',
+      image: 'Rahul.webp'
+    },
+    {
+      name: 'Dr. Amit Kumar Chaurasia',
+      specialization: 'Chief, Cath Lab & TAVI (Unit I)',
+      qualifications: '',
+      expertise: '',
+      image: 'Amit.webp'
     }
   ];
+  
 
   return (
     <section id="doctors" className="py-8 sm:py-12 lg:py-16 bg-amber-50">
@@ -47,7 +55,7 @@ const DoctorProfiles = () => {
             Meet Our Doctors
           </h2>
           <p className="text-amber-800 text-base sm:text-lg max-w-3xl mx-auto px-4">
-            World-class specialists dedicated to providing exceptional oncology care with personalized treatment approaches.
+            World-class specialists dedicated to providing exceptional cardiology care with personalized treatment approaches.
           </p>
         </div>
 
@@ -62,7 +70,7 @@ const DoctorProfiles = () => {
                     <img 
                       src={doctor.image} 
                       alt={doctor.name}
-                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-amber-500"
+                      className="w-20 h-20 sm:w-28 sm:h-28 rounded-full object-contain border-4 border-amber-500"
                     />
                     <div className="absolute -bottom-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-green-500 rounded-full border-2 border-white"></div>
                   </div>

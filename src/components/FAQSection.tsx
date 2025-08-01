@@ -6,46 +6,47 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "What are the major key points related to conditions treated in oncology?",
-      answer: "Our oncology department treats all types of cancers including breast, lung, prostate, colorectal, brain, blood cancers, and many rare cancers. We provide comprehensive care from diagnosis to treatment and follow-up with advanced surgical techniques, chemotherapy, radiation therapy, and immunotherapy."
+      question: "What are the major key points related to conditions treated in cardiology?",
+      answer: "Our cardiology department manages a wide spectrum of heart conditions including coronary artery disease, heart attacks, heart failure, arrhythmias, valvular heart diseases, congenital heart defects, and cardiomyopathies. We offer comprehensive evaluation, diagnostic testing, medical management, and advanced interventional and surgical procedures."
     },
     {
-      question: "Under what circumstances do I seek the help of an oncologist?",
-      answer: "You should consult an oncologist if you have been diagnosed with cancer, have suspicious symptoms, need a second opinion, require specialized cancer screening due to family history or genetic factors, or if your primary care physician refers you for further evaluation."
+      question: "Under what circumstances should I consult a cardiologist?",
+      answer: "You should seek a cardiologist if you experience chest pain, shortness of breath, palpitations, dizziness, high blood pressure, swelling of the legs, have a history of heart disease, or have significant risk factors such as diabetes, smoking, high cholesterol, or a strong family history of heart conditions."
     },
     {
-      question: "How many subtypes does oncology have and what are they?",
-      answer: "Oncology includes medical oncology (chemotherapy, immunotherapy), surgical oncology (cancer surgery), radiation oncology (radiation therapy), and specialized areas like pediatric oncology, gynecologic oncology, neuro-oncology, hematology-oncology, and thoracic oncology."
+      question: "How many subtypes does cardiology have and what are they?",
+      answer: "Cardiology includes interventional cardiology (stent placement, angioplasty), electrophysiology (heart rhythm disorders), heart failure and transplant cardiology, pediatric cardiology (children's heart care), preventive cardiology, and non-invasive cardiology (diagnostic imaging and stress tests)."
     },
     {
-      question: "What can be the alternative options towards surgical intervention in oncology?",
-      answer: "Alternatives to surgery include chemotherapy, radiation therapy, immunotherapy, targeted therapy, hormone therapy, and newer treatments like CAR-T cell therapy. The best approach depends on cancer type, stage, patient's overall health, and individual factors."
+      question: "What are alternative treatment options to cardiac surgery?",
+      answer: "Alternatives to open-heart surgery may include lifestyle changes, medications, minimally invasive procedures like angioplasty and stenting, catheter-based therapies, and device implantation. The best approach depends on your specific condition, severity, and overall health status."
     },
     {
-      question: "What do you mean by minimally invasive cancer surgery and when can it be applied?",
-      answer: "Minimally invasive surgery uses small incisions, laparoscopic or robotic techniques to remove tumors with less trauma, reduced pain, shorter hospital stays, and faster recovery compared to traditional open surgery. It can be applied when technically feasible and oncologically safe."
+      question: "What does minimally invasive heart surgery mean and when is it used?",
+      answer: "Minimally invasive heart surgery involves smaller incisions and advanced instruments (including robotic assistance) to treat cardiac conditions, resulting in less pain and faster recovery. It is used for select valve repairs, coronary bypasses, and other structural heart issues when appropriate."
     },
     {
-      question: "After undergoing cancer treatment, how much time does it take to recover?",
-      answer: "Recovery time varies greatly depending on the type of cancer, treatment received, patient's overall health, and individual factors. It can range from weeks to months. Our team provides personalized recovery plans and ongoing support throughout the healing process."
+      question: "How long does it take to recover after cardiac treatment?",
+      answer: "Recovery varies based on the type of treatment, underlying heart condition, and your general health. Simple procedures may require a few days of rest, while major surgeries can require several weeks or months. Our team provides individualized recovery and rehabilitation plans to support your journey."
     },
     {
-      question: "While seeking treatment for cancer, is one prone to certain risks?",
-      answer: "Like all medical treatments, cancer therapies carry potential risks and side effects. However, our experienced team carefully evaluates each patient to minimize risks while maximizing treatment benefits. We provide comprehensive support to manage any side effects that may occur."
+      question: "Are there risks involved in cardiac treatments?",
+      answer: "All medical and surgical cardiac treatments carry potential risks and side effects, such as bleeding, infection, or arrhythmias. Our experienced team thoroughly assesses your risk to ensure safe and effective treatment, providing close monitoring and support throughout your care."
     },
     {
-      question: "What do I need to do before getting cancer treatment?",
-      answer: "Before treatment, you'll need comprehensive evaluation including medical history, physical examination, diagnostic tests, and staging. We also recommend getting a second opinion, understanding treatment options, preparing mentally and emotionally, and arranging support systems."
+      question: "What should I do before starting cardiac treatment?",
+      answer: "Before treatment, you’ll undergo thorough evaluation including history, examination, ECG, blood tests, echocardiography and other imaging. It’s important to discuss your concerns, understand your treatment options, prepare for required lifestyle adjustments, and arrange for support as needed."
     },
     {
-      question: "What do I say when I first visit the doctor that treats cancer?",
-      answer: "Be prepared to discuss your symptoms, medical history, family history of cancer, current medications, and any concerns you have. Bring all relevant medical records, test results, and a list of questions. Our doctors will guide you through the consultation process."
+      question: "What should I say during my first visit to a cardiologist?",
+      answer: "Share your symptoms, medical history, family history of heart disease, medications, lifestyle habits, and any concerns you have. Bring all relevant test results, previous records, and list any questions. Our cardiologists will guide you through each step of the consultation."
     },
     {
-      question: "Are there ways I can stop myself from getting cancer?",
-      answer: "While not all cancers can be prevented, you can reduce risk through healthy lifestyle choices: avoid tobacco, limit alcohol, maintain healthy weight, exercise regularly, eat a balanced diet, protect from sun exposure, get vaccinated, and undergo regular screenings as recommended."
+      question: "How can I prevent heart disease?",
+      answer: "While some risk factors can’t be changed, you can lower your risk by not smoking, maintaining a healthy diet, exercising regularly, controlling blood pressure and cholesterol, managing stress, limiting alcohol, and getting regular cardiac screenings as recommended by your doctor."
     }
   ];
+  
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);

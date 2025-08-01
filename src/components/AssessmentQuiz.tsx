@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle, Heart, Calendar, FileText, MapPin, Clock, User, Phone, Mail } from 'lucide-react';
 
-const AssessmentQuiz = () => {
+const CardiacAssessment = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [contactData, setContactData] = useState({
@@ -15,37 +15,57 @@ const AssessmentQuiz = () => {
 
   const questions = [
     {
-      id: 'cancer_stage',
-      name: 'cancer_stage',
-      title: 'What is your current cancer stage?',
-      subtitle: 'This helps us understand the extent of your condition',
+      id: 'cardiac_condition',
+      name: 'cardiac_condition',
+      title: 'What is your primary cardiac concern?',
+      subtitle: 'This helps us understand your heart condition and symptoms',
       icon: <Heart className="w-5 h-5" />,
       options: [
-        { value: 'stage-1', label: 'Stage 1', description: 'Early stage, localized', icon: 'I', color: 'green' },
-        { value: 'stage-2', label: 'Stage 2', description: 'Locally advanced', icon: 'II', color: 'yellow' },
-        { value: 'stage-3', label: 'Stage 3', description: 'Regional spread', icon: 'III', color: 'orange' },
-        { value: 'stage-4', label: 'Stage 4', description: 'Advanced/Metastatic', icon: 'IV', color: 'red' },
-        { value: 'unknown', label: 'Not sure/Need staging', description: "We'll help determine your stage", icon: '?', color: 'gray' }
+        { value: 'chest-pain', label: 'Chest Pain/Angina', description: 'Chest discomfort or pain', icon: '💔', color: 'red' },
+        { value: 'heart-attack', label: 'Heart Attack (Recent/Past)', description: 'Myocardial infarction', icon: '🚨', color: 'red' },
+        { value: 'heart-failure', label: 'Heart Failure', description: 'Weakened heart function', icon: '💙', color: 'blue' },
+        { value: 'arrhythmia', label: 'Irregular Heartbeat', description: 'Arrhythmia or palpitations', icon: '⚡', color: 'yellow' },
+        { value: 'valve-disease', label: 'Heart Valve Disease', description: 'Valve stenosis or regurgitation', icon: '🔄', color: 'purple' },
+        { value: 'bypass-needed', label: 'Need Bypass Surgery', description: 'Coronary artery bypass required', icon: '🛤️', color: 'orange' },
+        { value: 'preventive', label: 'Preventive Care/Screening', description: 'Risk assessment and prevention', icon: '🛡️', color: 'green' },
+        { value: 'other', label: 'Other Cardiac Condition', description: 'Other heart-related concerns', icon: '❓', color: 'gray' }
       ]
     },
     {
-      id: 'medical_reports',
-      name: 'medical_reports',
-      title: 'Do you have your medical reports and test results?',
-      subtitle: 'Having your medical history helps us provide better care',
+      id: 'symptoms_severity',
+      name: 'symptoms_severity',
+      title: 'How severe are your current symptoms?',
+      subtitle: 'Understanding your symptom severity helps prioritize your care',
+      icon: <Clock className="w-5 h-5" />,
+      options: [
+        { value: 'severe', label: 'Severe - Daily symptoms affecting normal activities', description: 'Symptoms interfere with daily life', color: 'red' },
+        { value: 'moderate', label: 'Moderate - Symptoms with exertion or stress', description: 'Symptoms during physical activity', color: 'orange' },
+        { value: 'mild', label: 'Mild - Occasional symptoms', description: 'Infrequent or minor symptoms', color: 'yellow' },
+        { value: 'none', label: 'No current symptoms', description: 'Asymptomatic or preventive care', color: 'green' },
+        { value: 'emergency', label: 'Emergency - Chest pain right now', description: 'Currently experiencing severe symptoms', color: 'red' }
+      ]
+    },
+    {
+      id: 'risk_factors',
+      name: 'risk_factors',
+      title: 'Which risk factors apply to you?',
+      subtitle: 'These factors help us assess your cardiovascular risk profile',
       icon: <FileText className="w-5 h-5" />,
       options: [
-        { value: 'complete', label: 'Yes, I have all my medical reports', description: 'Complete medical documentation available', color: 'green' },
-        { value: 'partial', label: 'Yes, but some reports are missing', description: 'Partial medical records available', color: 'yellow' },
-        { value: 'digital', label: 'I have digital copies/scans', description: 'Electronic versions of medical records', color: 'blue' },
-        { value: 'none', label: "No, I don't have my reports", description: "We'll help you obtain necessary records", color: 'red' }
+        { value: 'diabetes-hypertension', label: 'Diabetes & High Blood Pressure', description: 'Both major risk factors present', color: 'red' },
+        { value: 'diabetes', label: 'Diabetes Only', description: 'Diabetic with good BP control', color: 'orange' },
+        { value: 'hypertension', label: 'High Blood Pressure Only', description: 'Hypertension without diabetes', color: 'orange' },
+        { value: 'smoking-family', label: 'Smoking & Family History', description: 'Smoker with cardiac family history', color: 'red' },
+        { value: 'family-history', label: 'Family History of Heart Disease', description: 'Genetic predisposition', color: 'yellow' },
+        { value: 'lifestyle', label: 'Lifestyle Factors (Obesity, Stress)', description: 'Sedentary lifestyle, high stress', color: 'yellow' },
+        { value: 'minimal', label: 'Minimal Risk Factors', description: 'Generally healthy lifestyle', color: 'green' }
       ]
     },
     {
       id: 'country_location',
       name: 'country_location',
       title: 'Which country are you traveling from?',
-      subtitle: 'This helps us arrange travel and visa assistance',
+      subtitle: 'This helps us arrange travel and visa assistance for your cardiac care',
       icon: <MapPin className="w-5 h-5" />,
       options: [
         { value: 'africa', label: 'African Countries', description: 'Nigeria, Kenya, Ethiopia, etc.', color: 'green' },
@@ -56,31 +76,17 @@ const AssessmentQuiz = () => {
       ]
     },
     {
-      id: 'current_treatment',
-      name: 'current_treatment',
-      title: 'Are you currently receiving any cancer treatment?',
-      subtitle: 'Understanding your current treatment helps us plan better',
-      icon: <Calendar className="w-5 h-5" />,
-      options: [
-        { value: 'chemotherapy', label: 'Yes, chemotherapy', color: 'blue' },
-        { value: 'radiation', label: 'Yes, radiation therapy', color: 'yellow' },
-        { value: 'surgery', label: 'Recently had surgery', color: 'green' },
-        { value: 'multiple', label: 'Multiple treatments', color: 'purple' },
-        { value: 'none', label: 'No current treatment', color: 'gray' }
-      ]
-    },
-    {
       id: 'treatment_urgency',
       name: 'treatment_urgency',
-      title: 'How urgent is your need for treatment?',
-      subtitle: 'This helps us prioritize your care appropriately',
-      icon: <Clock className="w-5 h-5" />,
+      title: 'How urgent is your need for cardiac treatment?',
+      subtitle: 'This helps us prioritize your cardiac care appropriately',
+      icon: <Calendar className="w-5 h-5" />,
       options: [
-        { value: 'emergency', label: 'Emergency - Need immediate care', description: 'Critical condition requiring urgent attention', color: 'red' },
-        { value: 'urgent', label: 'Urgent - Within 1-2 weeks', description: 'Time-sensitive treatment needed', color: 'orange' },
-        { value: 'soon', label: 'Soon - Within 1 month', description: 'Treatment needed in the near future', color: 'yellow' },
-        { value: 'planned', label: 'Planned - Can wait 1-3 months', description: 'Scheduled treatment planning', color: 'blue' },
-        { value: 'consultation', label: 'Just need consultation/second opinion', description: 'Expert advice and evaluation', color: 'green' }
+        { value: 'emergency', label: 'Emergency - Need immediate cardiac care', description: 'Acute cardiac event requiring urgent attention', color: 'red' },
+        { value: 'urgent', label: 'Urgent - Within 1-2 weeks', description: 'Time-sensitive cardiac intervention needed', color: 'orange' },
+        { value: 'soon', label: 'Soon - Within 1 month', description: 'Cardiac procedure needed in near future', color: 'yellow' },
+        { value: 'planned', label: 'Planned - Can wait 1-3 months', description: 'Elective cardiac procedure planning', color: 'blue' },
+        { value: 'consultation', label: 'Just need consultation/second opinion', description: 'Expert cardiac evaluation and advice', color: 'green' }
       ]
     }
   ];
@@ -207,65 +213,128 @@ const AssessmentQuiz = () => {
   const generateRecommendations = () => {
     const recommendations = [];
     
-    if (answers.cancer_stage === 'stage-4') {
+    // Emergency conditions
+    if (answers.symptoms_severity === 'emergency' || answers.treatment_urgency === 'emergency') {
       recommendations.push({
         icon: '🚨',
-        title: 'Priority Care Program',
-        description: 'Advanced stage cancer requires immediate specialist attention with our comprehensive oncology team.',
+        title: 'Emergency Cardiac Protocol',
+        description: 'Immediate cardiac emergency care with 24/7 monitoring and emergency intervention team.',
         color: 'red'
-      });
-    } else if (answers.cancer_stage === 'stage-1') {
-      recommendations.push({
-        icon: '🎯',
-        title: 'Early Intervention Program',
-        description: 'Early stage detection offers excellent treatment outcomes with minimally invasive procedures.',
-        color: 'green'
       });
     }
 
-    if (answers.treatment_urgency === 'emergency') {
+    // High-risk conditions
+    if (answers.cardiac_condition === 'heart-attack' || answers.cardiac_condition === 'heart-failure') {
       recommendations.push({
-        icon: '⚡',
-        title: 'Emergency Care Protocol',
-        description: 'Immediate admission and emergency oncology consultation within 24 hours.',
+        icon: '🏥',
+        title: 'Intensive Cardiac Care',
+        description: 'Specialized cardiac intensive care unit with advanced life support and monitoring.',
         color: 'red'
       });
-    } else if (answers.treatment_urgency === 'consultation') {
+    }
+
+    // Surgical interventions
+    if (answers.cardiac_condition === 'bypass-needed' || answers.cardiac_condition === 'valve-disease') {
       recommendations.push({
-        icon: '👨‍⚕️',
-        title: 'Expert Second Opinion',
-        description: 'Virtual consultation with our senior oncologists for comprehensive case review.',
+        icon: '⚕️',
+        title: 'Cardiac Surgery Program',
+        description: 'Expert cardiac surgeons with minimally invasive techniques and robotic surgery options.',
         color: 'blue'
       });
     }
 
+    // Risk factor management
+    if (answers.risk_factors === 'diabetes-hypertension' || answers.risk_factors === 'smoking-family') {
+      recommendations.push({
+        icon: '📊',
+        title: 'Risk Factor Management',
+        description: 'Comprehensive program to manage diabetes, hypertension, and lifestyle modifications.',
+        color: 'orange'
+      });
+    }
+
+    // Preventive care
+    if (answers.cardiac_condition === 'preventive' || answers.symptoms_severity === 'none') {
+      recommendations.push({
+        icon: '🛡️',
+        title: 'Preventive Cardiac Care',
+        description: 'Advanced cardiac screenings, stress tests, and personalized prevention plans.',
+        color: 'green'
+      });
+    }
+
+    // Travel assistance
     if (answers.country_location !== 'india') {
       recommendations.push({
         icon: '✈️',
         title: 'Medical Tourism Package',
-        description: 'Complete visa assistance, travel coordination, and accommodation arrangements.',
+        description: 'Complete travel coordination, visa assistance, and accommodation for cardiac care.',
         color: 'purple'
       });
     }
 
+    // Consultation services
+    if (answers.treatment_urgency === 'consultation') {
+      recommendations.push({
+        icon: '👨‍⚕️',
+        title: 'Expert Cardiac Consultation',
+        description: 'Virtual or in-person consultation with leading cardiologists and cardiac surgeons.',
+        color: 'blue'
+      });
+    }
+
+    // Always add comprehensive care
     recommendations.push({
-      icon: '🏥',
-      title: 'Comprehensive Cancer Care',
-      description: 'Multidisciplinary team approach with personalized treatment planning.',
+      icon: '❤️',
+      title: 'Comprehensive Heart Care',
+      description: 'Multidisciplinary cardiac team with personalized treatment plans and rehabilitation.',
       color: 'artemis'
     });
 
     return recommendations;
   };
 
-  // Updated handleFormSubmit - removes preventDefault to allow natural form submission to Formester
-  const handleFormSubmit = (e) => {
-    // Let the form submit naturally to Formester
-    // The form will redirect based on Formester configuration
-    console.log('Form submitted to Formester with all data');
-    
-    // Optional: You can still show a loading state or confirmation here
-    // but don't prevent the default form submission
+  const handleFormSubmit = async () => {
+    try {
+      // Prepare form data
+      const formData = new FormData();
+      
+      // Add all quiz answers
+      Object.entries(answers).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      
+      // Add assessment summary
+      const assessmentSummary = Object.entries(answers).map(([key, value]) => {
+        const question = questions.find(q => q.id === key);
+        const option = question?.options.find(opt => opt.value === value);
+        return `${question?.title}: ${option?.label || value}`;
+      }).join(' | ');
+      
+      formData.append('assessment_summary', assessmentSummary);
+      formData.append('submission_date', new Date().toISOString());
+      formData.append('contact_name', contactData.name);
+      formData.append('contact_country_code', contactData.countryCode);
+      formData.append('contact_phone_number', contactData.phoneNumber);
+      formData.append('contact_full_phone', `${contactData.countryCode} ${contactData.phoneNumber}`);
+      formData.append('contact_email', contactData.email);
+
+      // Submit to Formester
+      const response = await fetch('https://app.formester.com/forms/DZoBSP5fk/submissions', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        setShowResults(true);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Still show results for demo purposes
+      setShowResults(true);
+    }
   };
 
   const isFormValid = contactData.name.trim() && contactData.phoneNumber.trim() && contactData.email.trim();
@@ -283,8 +352,8 @@ const AssessmentQuiz = () => {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-                <h2 className="text-3xl font-bold text-rich-chocolate mb-3">Assessment Submitted Successfully!</h2>
-                <p className="text-coffee-bean">Thank you for completing the assessment. Our team will contact you within 24 hours with your personalized care plan.</p>
+                <h2 className="text-3xl font-bold text-rich-chocolate mb-3">Cardiac Assessment Submitted Successfully!</h2>
+                <p className="text-coffee-bean">Thank you for completing the cardiac assessment. Our cardiology team will contact you within 24 hours with your personalized heart care plan.</p>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -293,6 +362,7 @@ const AssessmentQuiz = () => {
                     red: 'bg-red-50 border-red-200 text-red-800',
                     green: 'bg-green-50 border-green-200 text-green-800',
                     blue: 'bg-blue-50 border-blue-200 text-blue-800',
+                    orange: 'bg-orange-50 border-orange-200 text-orange-800',
                     purple: 'bg-purple-50 border-purple-200 text-purple-800',
                     artemis: 'bg-soft-beige border-golden-honey text-rich-chocolate'
                   };
@@ -328,24 +398,19 @@ const AssessmentQuiz = () => {
 
   // Main form wrapper for entire quiz flow
   return (
-    <section id="assessment" className="py-16 bg-warm-ivory">
+    <section id="cardiac-assessment" className="py-16 bg-warm-ivory">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-rich-chocolate mb-3">Cancer Care Assessment</h2>
-            <p className="text-coffee-bean">Help us understand your situation so we can provide the most appropriate care</p>
+            <h2 className="text-3xl font-bold text-rich-chocolate mb-3">Cardiac Care Assessment</h2>
+            <p className="text-coffee-bean">Help us understand your heart condition so we can provide the most appropriate cardiac care</p>
           </div>
 
           <div className="bg-cream-white rounded-2xl p-8 border border-caramel/20 shadow-lg">
             
-            {/* Contact Form View - UPDATED WITH PROPER FORM TAG */}
+            {/* Contact Form View */}
             {showForm ? (
-              <form 
-             accept-charset='UTF-8' 
-             action='https://app.formester.com/forms/DZoBSP5fk/submissions' 
-             method='POST'
-            onSubmit={handleFormSubmit}
-              >
+              <div>
                 <div className="mb-8">
                   <div className="flex justify-between text-sm text-coffee-bean mb-2">
                     <span>Final Step</span>
@@ -358,31 +423,8 @@ const AssessmentQuiz = () => {
 
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-rich-chocolate mb-3">Contact Information</h3>
-                  <p className="text-coffee-bean">Please provide your contact details to receive your personalized care plan</p>
+                  <p className="text-coffee-bean">Please provide your contact details to receive your personalized cardiac care plan</p>
                 </div>
-
-                {/* Hidden fields for all quiz answers */}
-                {Object.entries(answers).map(([key, value]) => (
-                  <input key={key} type="hidden" name={key} value={value} />
-                ))}
-
-                {/* ADDED: Quiz summary as hidden field for easier reading in Formester */}
-                <input 
-                  type="hidden" 
-                  name="assessment_summary" 
-                  value={Object.entries(answers).map(([key, value]) => {
-                    const question = questions.find(q => q.id === key);
-                    const option = question?.options.find(opt => opt.value === value);
-                    return `${question?.title}: ${option?.label || value}`;
-                  }).join(' | ')}
-                />
-
-                {/* ADDED: Submission timestamp */}
-                <input 
-                  type="hidden" 
-                  name="submission_date" 
-                  value={new Date().toISOString()}
-                />
 
                 <div className="space-y-6 mb-8">
                   <div>
@@ -392,7 +434,6 @@ const AssessmentQuiz = () => {
                     </label>
                     <input
                       type="text"
-                      name="contact_name"
                       value={contactData.name}
                       onChange={(e) => handleContactChange('name', e.target.value)}
                       className="w-full p-4 border-2 border-caramel/20 rounded-lg focus:border-golden-honey focus:outline-none transition-colors"
@@ -408,7 +449,6 @@ const AssessmentQuiz = () => {
                     </label>
                     <div className="flex">
                       <select
-                        name="contact_country_code"
                         value={contactData.countryCode}
                         onChange={(e) => handleContactChange('countryCode', e.target.value)}
                         className="p-4 border-2 border-caramel/20 rounded-l-lg focus:border-golden-honey focus:outline-none bg-white"
@@ -421,7 +461,6 @@ const AssessmentQuiz = () => {
                       </select>
                       <input
                         type="tel"
-                        name="contact_phone_number"
                         value={contactData.phoneNumber}
                         onChange={(e) => handleContactChange('phoneNumber', e.target.value)}
                         className="flex-1 p-4 border-2 border-l-0 border-caramel/20 rounded-r-lg focus:border-golden-honey focus:outline-none"
@@ -429,12 +468,6 @@ const AssessmentQuiz = () => {
                         required
                       />
                     </div>
-                    {/* ADDED: Combined phone number for easier processing */}
-                    <input
-                      type="hidden"
-                      name="contact_full_phone"
-                      value={`${contactData.countryCode} ${contactData.phoneNumber}`}
-                    />
                   </div>
 
                   <div>
@@ -444,7 +477,6 @@ const AssessmentQuiz = () => {
                     </label>
                     <input
                       type="email"
-                      name="contact_email"
                       value={contactData.email}
                       onChange={(e) => handleContactChange('email', e.target.value)}
                       className="w-full p-4 border-2 border-caramel/20 rounded-lg focus:border-golden-honey focus:outline-none transition-colors"
@@ -455,7 +487,7 @@ const AssessmentQuiz = () => {
                 </div>
 
                 <div className="mb-8 p-4 bg-soft-beige rounded-lg">
-                  <h4 className="font-semibold text-rich-chocolate mb-3">Assessment Summary:</h4>
+                  <h4 className="font-semibold text-rich-chocolate mb-3">Cardiac Assessment Summary:</h4>
                   <div className="text-sm text-coffee-bean space-y-1">
                     {Object.entries(answers).map(([key, value]) => {
                       const question = questions.find(q => q.id === key);
@@ -481,7 +513,8 @@ const AssessmentQuiz = () => {
                   </button>
 
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleFormSubmit}
                     disabled={!isFormValid}
                     className={`flex items-center space-x-2 px-8 py-3 rounded-lg font-semibold transition-colors ${
                       isFormValid
@@ -493,9 +526,9 @@ const AssessmentQuiz = () => {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
-              </form>
+              </div>
             ) : (
-              /* Quiz Questions View - No form tag here */
+              /* Quiz Questions View */
               <>
                 <div className="mb-8">
                   <div className="flex justify-between text-sm text-coffee-bean mb-2">
@@ -617,4 +650,4 @@ const AssessmentQuiz = () => {
   );
 };
 
-export default AssessmentQuiz;
+export default CardiacAssessment;

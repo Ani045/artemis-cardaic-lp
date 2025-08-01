@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import ConsultationPopup from './ConsultationPopup';
 
+
 const Testimonials = () => {
    const [isConsultationPopupOpen, setIsConsultationPopupOpen] = useState(false);
     
@@ -130,21 +131,22 @@ const Testimonials = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-rich-chocolate rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-cream-white mb-4">
-              Sharing the Incredible Story of a Cancer Survivor!
-            </h3>
-            <p className="text-cream-white/80 mb-6 text-lg">
-              Get ready to be inspired as we honor the strength and courage of remarkable cancer survivors.
-            </p>
-            <button 
-               onClick={openConsultationPopup}
-              className="bg-golden-honey text-rich-chocolate px-8 py-4 rounded-lg font-semibold hover:bg-deep-copper transition-colors shadow-lg"
-            >
-              Start Your Journey Today
-            </button>
-          </div>
-        </div>
+  <div className="bg-rich-chocolate rounded-2xl p-8">
+    <h3 className="text-2xl font-bold text-cream-white mb-4">
+      Celebrating the Inspiring Journey of a Heart Survivor!
+    </h3>
+    <p className="text-cream-white/80 mb-6 text-lg">
+      Be motivated by the strength and resilience shown by incredible heart survivors. Let’s honor their courage and commitment to heart health.
+    </p>
+    <button 
+       onClick={openConsultationPopup}
+      className="bg-golden-honey text-rich-chocolate px-8 py-4 rounded-lg font-semibold hover:bg-deep-copper transition-colors shadow-lg"
+    >
+      Begin Your Heart Health Journey
+    </button>
+  </div>
+</div>
+
       </div>
       <ConsultationPopup 
   isOpen={isConsultationPopupOpen}

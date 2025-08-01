@@ -10,77 +10,76 @@ const ServicesGrid = () => {
   const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
   const services = [
     {
-      icon: <Stethoscope className="w-6 h-6" />,
-      title: 'Medical Oncology for Adults',
-      description: 'Comprehensive chemotherapy and immunotherapy treatments for adult cancer patients.',
-      features: ['Chemotherapy', 'Immunotherapy']
-    },
-    {
-      icon: <Brain className="w-6 h-6" />,
-      title: 'Neuro-Oncology',
-      description: 'Specialized treatment for brain and spinal cord cancers with advanced surgical techniques.',
-      features: ['Brain Cancers', 'Spinal Cord Cancers']
-    },
-    {
-      icon: <Activity className="w-6 h-6" />,
-      title: 'Haemato-Oncology',
-      description: 'Expert care for blood cancers including bone marrow transplantation services.',
-      features: ['Blood Cancers', 'Bone Marrow Transplantation']
-    },
-    {
       icon: <Heart className="w-6 h-6" />,
-      title: 'Breast Cancer',
-      description: 'Comprehensive care and treatment for all stages of breast cancer.',
-      features: ['Early Detection', 'Advanced Therapies']
+      title: 'Interventional Cardiology',
+      description: 'Advanced procedures for diagnosing and treating coronary artery diseases using minimally invasive techniques.',
+      features: ['Angioplasty', 'Stenting']
     },
-    
     {
       icon: <Zap className="w-6 h-6" />,
-      title: 'Radiation Oncology for Tumors',
-      description: 'Advanced radiation therapy techniques for precise tumor targeting.',
-      features: ['IMRT', 'CyberKnife Technology']
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: 'Prostate Cancer Treatment',
-      description: 'Specialized care for prostate cancer with minimally invasive surgical options.',
-      features: ['Robotic Surgery', 'Targeted Therapy']
-    },
-    {
-      icon: <Stethoscope className="w-6 h-6" />,
-      title: 'Gastro-Intestinal Oncology',
-      description: 'Expert treatment for digestive system cancers with advanced surgical techniques.',
-      features: ['GI Cancers', 'Minimally Invasive Surgery']
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      title: 'Breast Cancer Treatment',
-      description: 'Comprehensive breast cancer care with personalized treatment approaches.',
-      features: ['Surgical Oncology', 'Reconstructive Surgery']
-    },
-    {
-      icon: <Brain className="w-6 h-6" />,
-      title: 'Head & Neck Oncology',
-      description: 'Specialized treatment for head and neck cancers with reconstructive options.',
-      features: ['ENT Oncology', 'Reconstructive Surgery']
+      title: 'Electrophysiology',
+      description: 'Diagnosis and treatment of heart rhythm disorders using state-of-the-art technology.',
+      features: ['Pacemaker Implantation', 'Radiofrequency Ablation']
     },
     {
       icon: <Activity className="w-6 h-6" />,
-      title: 'Thoracic Oncology',
-      description: 'Expert care for lung and chest cancers with advanced surgical techniques.',
-      features: ['Lung Cancer', 'Minimally Invasive Surgery']
+      title: 'Cardiac Rehabilitation',
+      description: 'Comprehensive rehab programs to support recovery after heart surgery or cardiac events.',
+      features: ['Exercise Therapy', 'Lifestyle Counseling']
+    },
+    {
+      icon: <Stethoscope className="w-6 h-6" />,
+      title: 'Preventive Cardiology',
+      description: 'Focused on early detection and prevention of heart disease through risk assessment and lifestyle management.',
+      features: ['Heart Risk Screening', 'Lifestyle Modification']
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: 'Liver Cancer Treatment',
-      description: 'Comprehensive liver cancer care with advanced treatment modalities.',
-      features: ['Hepatic Surgery', 'Targeted Therapy']
+      title: 'Heart Failure Management',
+      description: 'Personalized care for patients with heart failure to improve quality of life and outcomes.',
+      features: ['Medication Optimization', 'Device Therapy']
+    },
+    {
+      icon: <Brain className="w-6 h-6" />,
+      title: 'Cardiac Imaging',
+      description: 'Advanced diagnostic imaging for accurate evaluation of cardiac conditions.',
+      features: ['Echocardiography', 'Cardiac MRI']
     },
     {
       icon: <Heart className="w-6 h-6" />,
-      title: 'Pediatric Oncology',
-      description: 'Specialized cancer care for children with family-centered approach.',
-      features: ['Childhood Cancers', 'Family Support']
+      title: 'Pediatric Cardiology',
+      description: 'Specialized care for infants and children with congenital or acquired heart conditions.',
+      features: ['Congenital Heart Defects', 'Pediatric Echo']
+    },
+    {
+      icon: <Zap className="w-6 h-6" />,
+      title: 'Structural Heart Disease',
+      description: 'Minimally invasive treatment for valve disorders and structural anomalies of the heart.',
+      features: ['TAVR', 'MitraClip']
+    },
+    {
+      icon: <Stethoscope className="w-6 h-6" />,
+      title: 'Non-Invasive Cardiology',
+      description: 'Heart evaluations through stress testing, ECGs, and other non-surgical diagnostics.',
+      features: ['TMT', 'Holter Monitoring']
+    },
+    {
+      icon: <Activity className="w-6 h-6" />,
+      title: 'Emergency Cardiac Care',
+      description: '24x7 cardiac emergency services with rapid response and expert intervention.',
+      features: ['Heart Attack Response', 'Cardiac Arrest Management']
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: 'Cardiothoracic Surgery',
+      description: 'Advanced surgical treatment for complex heart and chest conditions.',
+      features: ['Bypass Surgery', 'Valve Replacement']
+    },
+    {
+      icon: <Brain className="w-6 h-6" />,
+      title: 'Vascular Surgery',
+      description: 'Comprehensive care for diseases of the blood vessels outside the heart.',
+      features: ['Aneurysm Repair', 'Peripheral Bypass']
     }
   ];
 
@@ -88,12 +87,12 @@ const ServicesGrid = () => {
     <section id="services" className="py-8 bg-soft-beige">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-rich-chocolate mb-4">
-          Our Cancer Treatment Services
-          </h2>
-          <p className="text-coffee-bean max-w-3xl mx-auto text-lg">
-          We have wide range of Cancer Treatments with the best team of cancer doctors in India
-          </p>
+        <h2 className="text-3xl lg:text-4xl font-bold text-rich-chocolate mb-4">
+  Our Cardiac Care Services
+</h2>
+<p className="text-coffee-bean max-w-3xl mx-auto text-lg">
+  We offer world-class cardiac services with cutting-edge technology and experienced cardiologists to care for your heart.
+</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
