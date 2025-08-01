@@ -122,7 +122,7 @@ const Testimonials = () => {
                 />
                 <div>
                   <p className="font-semibold text-rich-chocolate">Sarah Johnson</p>
-                  <p className="text-coffee-bean text-sm">Cancer Survivor, UK</p>
+                  <p className="text-coffee-bean text-sm"> UK</p>
                 </div>
               </div>
             </div>
@@ -133,16 +133,16 @@ const Testimonials = () => {
         <div className="text-center mt-16">
   <div className="bg-rich-chocolate rounded-2xl p-8">
     <h3 className="text-2xl font-bold text-cream-white mb-4">
-      Celebrating the Inspiring Journey of a Heart Survivor!
+     Emergency slots available : Priority booking for urgent cases
     </h3>
     <p className="text-cream-white/80 mb-6 text-lg">
-      Be motivated by the strength and resilience shown by incredible heart survivors. Let’s honor their courage and commitment to heart health.
+      Limited international patient slots for 2025
     </p>
     <button 
        onClick={openConsultationPopup}
       className="bg-golden-honey text-rich-chocolate px-8 py-4 rounded-lg font-semibold hover:bg-deep-copper transition-colors shadow-lg"
     >
-      Begin Your Heart Health Journey
+      Book Appointment Now
     </button>
   </div>
 </div>

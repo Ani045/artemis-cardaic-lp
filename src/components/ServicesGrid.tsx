@@ -8,80 +8,45 @@ const ServicesGrid = () => {
   
     const openConsultationPopup = () => setIsConsultationPopupOpen(true);
   const closeConsultationPopup = () => setIsConsultationPopupOpen(false);
-  const services = [
-    {
-      icon: <Heart className="w-6 h-6" />,
-      title: 'Interventional Cardiology',
-      description: 'Advanced procedures for diagnosing and treating coronary artery diseases using minimally invasive techniques.',
-      features: ['Angioplasty', 'Stenting']
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: 'Electrophysiology',
-      description: 'Diagnosis and treatment of heart rhythm disorders using state-of-the-art technology.',
-      features: ['Pacemaker Implantation', 'Radiofrequency Ablation']
-    },
-    {
-      icon: <Activity className="w-6 h-6" />,
-      title: 'Cardiac Rehabilitation',
-      description: 'Comprehensive rehab programs to support recovery after heart surgery or cardiac events.',
-      features: ['Exercise Therapy', 'Lifestyle Counseling']
-    },
-    {
-      icon: <Stethoscope className="w-6 h-6" />,
-      title: 'Preventive Cardiology',
-      description: 'Focused on early detection and prevention of heart disease through risk assessment and lifestyle management.',
-      features: ['Heart Risk Screening', 'Lifestyle Modification']
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: 'Heart Failure Management',
-      description: 'Personalized care for patients with heart failure to improve quality of life and outcomes.',
-      features: ['Medication Optimization', 'Device Therapy']
-    },
-    {
-      icon: <Brain className="w-6 h-6" />,
-      title: 'Cardiac Imaging',
-      description: 'Advanced diagnostic imaging for accurate evaluation of cardiac conditions.',
-      features: ['Echocardiography', 'Cardiac MRI']
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      title: 'Pediatric Cardiology',
-      description: 'Specialized care for infants and children with congenital or acquired heart conditions.',
-      features: ['Congenital Heart Defects', 'Pediatric Echo']
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: 'Structural Heart Disease',
-      description: 'Minimally invasive treatment for valve disorders and structural anomalies of the heart.',
-      features: ['TAVR', 'MitraClip']
-    },
-    {
-      icon: <Stethoscope className="w-6 h-6" />,
-      title: 'Non-Invasive Cardiology',
-      description: 'Heart evaluations through stress testing, ECGs, and other non-surgical diagnostics.',
-      features: ['TMT', 'Holter Monitoring']
-    },
-    {
-      icon: <Activity className="w-6 h-6" />,
-      title: 'Emergency Cardiac Care',
-      description: '24x7 cardiac emergency services with rapid response and expert intervention.',
-      features: ['Heart Attack Response', 'Cardiac Arrest Management']
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: 'Cardiothoracic Surgery',
-      description: 'Advanced surgical treatment for complex heart and chest conditions.',
-      features: ['Bypass Surgery', 'Valve Replacement']
-    },
-    {
-      icon: <Brain className="w-6 h-6" />,
-      title: 'Vascular Surgery',
-      description: 'Comprehensive care for diseases of the blood vessels outside the heart.',
-      features: ['Aneurysm Repair', 'Peripheral Bypass']
-    }
-  ];
+const services = [
+  {
+    icon: <Heart className="w-6 h-6" />,
+    title: 'Minimally Invasive Heart Bypass Surgery',
+    description: 'Surgical restoration of blood flow with smaller incisions for faster recovery.',
+    features: ['Reduced trauma', 'Faster recovery', 'Lower infection risk'],
+  },
+  {
+    icon: <Zap className="w-6 h-6" />,
+    title: 'Angioplasty & Stent Placement (PTCA)',
+    description: 'Opening blocked arteries using balloons and stents to improve blood flow.',
+    features: ['Chest pain relief', 'Heart attack prevention', 'Quick recovery'],
+  },
+  {
+    icon: <Activity className="w-6 h-6" />,
+    title: 'Heart Valve Repair (TAVI, TAVR)',
+    description: 'Minimally invasive valve repair/replacement without open-heart surgery.',
+    features: ['No open surgery', 'Short hospital stay', 'Improved valve function'],
+  },
+  {
+    icon: <Stethoscope className="w-6 h-6" />,
+    title: 'Surgery for Arrhythmias (Pacemaker/ICD Implantation)',
+    description: 'Implantation of devices to regulate heart rhythm and prevent sudden arrest.',
+    features: ['Heart rhythm control', 'Prevent fainting', 'Minimally invasive'],
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: 'Left Ventricular Assist Device (LVAD/VAD) Implantation',
+    description: 'Mechanical support for heart function in advanced heart failure patients.',
+    features: ['Improved heart output', 'Better quality of life', 'Extended survival'],
+  },
+  {
+    icon: <Brain className="w-6 h-6" />,
+    title: 'Minimally Invasive & Robotic-Assisted Cardiac Surgery',
+    description: 'Precision heart surgery through small incisions with robotic assistance.',
+    features: ['High precision', 'Less blood loss', 'Faster recovery'],
+  },
+];
+
 
   return (
     <section id="services" className="py-8 bg-soft-beige">

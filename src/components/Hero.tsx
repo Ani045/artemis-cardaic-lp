@@ -230,8 +230,8 @@ const Hero: React.FC = () => {
           {/* LEFT */}
           <div className="text-white space-y-6 col-span-full lg:col-span-1">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-amber-500/30 rounded-full px-4 py-2">
-              <Shield className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-400 font-medium text-sm">
+              <Shield className="w-4 h-4 text-white" />
+              <span className="text-grey font-medium text-sm">
                 JCI Accredited • 25+ Years of Cardiac Excellence
               </span>
             </div>
@@ -245,9 +245,9 @@ const Hero: React.FC = () => {
               </h1>
 
               <h1 className="hidden lg:block text-4xl lg:text-5xl font-bold leading-tight mb-4">
-                Advanced & Compassionate{' '}
-                <span className="text-amber-400">Cardiac Care</span>
-                <br />at Artemis Hospitals
+                Get Life-Saving Heart Surgery 
+                <span className="text-amber-400"> with 98% Success</span>
+                <br />Rate — India's Most Trusted Cardiac Team{' '}
               </h1>
 
               <p className="text-white/90 text-lg max-w-lg leading-relaxed mb-6">
@@ -268,6 +268,36 @@ const Hero: React.FC = () => {
                   </div>
                 ))}
               </div>
+ <div className="mb-8">
+              {/* Mobile Stats - Single Stat */}
+              <div className="lg:hidden flex justify-center">
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 w-64">
+                  <div className="text-3xl font-bold text-amber-400">2,00,000+</div>
+                  <div className="text-white/80 text-sm">Cardiac Patients Treated</div>
+                </div>
+              </div>
+              
+              {/* Desktop Stats - All Four Stats */}
+              <div className="hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">500+</div>
+                  <div className="text-white/80 text-sm">Beds</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">70+</div>
+                  <div className="text-white/80 text-sm">Countries</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">400+</div>
+                  <div className="text-white/80 text-sm">Doctors</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                  <div className="text-2xl font-bold text-amber-400">40+</div>
+                  <div className="text-white/80 text-sm">Super Specialties</div>
+                </div>
+              </div>
+            </div>
+
             </div>
 
             {/* CTA */}
