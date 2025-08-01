@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Award, Users, Globe, HeartPulse } from 'lucide-react';
 
 const AboutSection = () => {

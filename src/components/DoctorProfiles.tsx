@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Star, Calendar, Award, Clock } from 'lucide-react';
 import { useState } from 'react';
 import ConsultationPopup from './ConsultationPopup';

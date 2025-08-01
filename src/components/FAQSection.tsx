@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-const FAQSection = () => {
-  const [openFAQ, setOpenFAQ] = useState(null);
+// Define FAQ item type
+type FAQ = {
+  question: string;
+  answer: string;
+};
 
-  const faqs = [
+const FAQSection: React.FC = () => {
+  // openFAQ state tracks which FAQ is open; it's a number or null
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+  const faqs: FAQ[] = [
     {
       question: "What are the major key points related to conditions treated in cardiology?",
       answer: "Our cardiology department manages a wide spectrum of heart conditions including coronary artery disease, heart attacks, heart failure, arrhythmias, valvular heart diseases, congenital heart defects, and cardiomyopathies. We offer comprehensive evaluation, diagnostic testing, medical management, and advanced interventional and surgical procedures."
@@ -46,9 +53,9 @@ const FAQSection = () => {
       answer: "While some risk factors can’t be changed, you can lower your risk by not smoking, maintaining a healthy diet, exercising regularly, controlling blood pressure and cholesterol, managing stress, limiting alcohol, and getting regular cardiac screenings as recommended by your doctor."
     }
   ];
-  
 
-  const toggleFAQ = (index) => {
+  // Toggle FAQ open or closed, typed parameter index as number
+  const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
@@ -70,6 +77,9 @@ const FAQSection = () => {
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-cream-white transition-colors"
+                aria-expanded={openFAQ === index}
+                aria-controls={`faq-answer-${index}`}
+                id={`faq-question-${index}`}
               >
                 <span className="font-semibold text-rich-chocolate pr-4">{faq.question}</span>
                 {openFAQ === index ? (
@@ -79,7 +89,12 @@ const FAQSection = () => {
                 )}
               </button>
               {openFAQ === index && (
-                <div className="px-6 pb-4">
+                <div
+                  id={`faq-answer-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${index}`}
+                  className="px-6 pb-4"
+                >
                   <div className="border-t border-caramel/20 pt-4">
                     <p className="text-coffee-bean leading-relaxed">{faq.answer}</p>
                   </div>

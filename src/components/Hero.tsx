@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Shield, Calendar } from 'lucide-react';
 
-const Hero = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    country: '',
-    countryCode: '',
-    message: ''
-  });
+type FormDataType = {
+  name: string;
+  phone: string;
+  email: string;
+  country: string;
+  countryCode: string;
+  message: string;
+};
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+type CountryType = {
+  name: string;
+  code: string;
+};
 
- // List of countries for dropdown
- const countries = [
+const countries: CountryType[] = [
   { name: 'Afghanistan', code: '+93' },
   { name: 'Algeria', code: '+213' },
   { name: 'Argentina', code: '+54' },
@@ -135,23 +136,37 @@ const Hero = () => {
   { name: 'Vietnam', code: '+84' }
 ].sort((a, b) => a.name.localeCompare(b.name));
 
+const Hero: React.FC = () => {
+  const [formData, setFormData] = useState<FormDataType>({
+    name: '',
+    phone: '',
+    email: '',
+    country: '',
+    countryCode: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   const handleConsultationClick = () => {
     const heroForm = document.querySelector('#hero-contact-form');
     if (heroForm) {
       heroForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
       setTimeout(() => {
         const firstInput = heroForm.querySelector('input');
-        if (firstInput) firstInput.focus();
+        if (firstInput) (firstInput as HTMLElement).focus();
       }, 500);
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleCountryChange = (e) => {
+  const handleCountryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = e.target.value;
     if (selectedValue) {
       const [countryName, countryCode] = selectedValue.split('|');
@@ -165,7 +180,8 @@ const Hero = () => {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
     try {
       const submitData = new FormData();
@@ -176,9 +192,11 @@ const Hero = () => {
       submitData.append('countryCode', formData.countryCode);
       submitData.append('message', formData.message);
 
-      console.log('Form Data to Submit:', Object.fromEntries(submitData));
+      console.log('Form Data to Submit:', Object.fromEntries(submitData.entries()));
 
+      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
+
       alert('Thank you for your interest! Our cardiac team will contact you soon.');
 
       setFormData({
@@ -257,6 +275,7 @@ const Hero = () => {
               <button
                 onClick={handleConsultationClick}
                 className="bg-amber-500 text-amber-900 px-8 py-4 rounded-lg font-semibold hover:bg-amber-400 transition-colors flex items-center space-x-2 shadow-lg"
+                type="button"
               >
                 <Calendar className="w-5 h-5" />
                 <span>Book a Free Cardiac Consultation</span>
@@ -279,36 +298,64 @@ const Hero = () => {
                 </p>
               </div>
 
-              <form className="space-y-4" onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit();
-              }}>
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-amber-800 mb-1">Name *</label>
-                    <input type="text" name="name" required value={formData.name} onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm" placeholder="Your full name" />
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm"
+                      placeholder="Your full name"
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-amber-800 mb-1">Phone Number *</label>
-                    <input type="tel" name="phone" required value={formData.phone} onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm" placeholder="Your phone number" />
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm"
+                      placeholder="Your phone number"
+                    />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-amber-800 mb-1">Email</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm" placeholder="your@email.com" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm"
+                    placeholder="your@email.com"
+                  />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-amber-800 mb-1">Country *</label>
-                  <select name="countrySelect" value={formData.country && formData.countryCode ? `${formData.country}|${formData.countryCode}` : ''} onChange={handleCountryChange} required
-                    className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm">
+                  <select
+                    name="countrySelect"
+                    value={
+                      formData.country && formData.countryCode
+                        ? `${formData.country}|${formData.countryCode}`
+                        : ''
+                    }
+                    onChange={handleCountryChange}
+                    required
+                    className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm"
+                  >
                     <option value="">Select your country</option>
-                    {countries.map((c) => (
-                      <option key={c.name} value={`${c.name}|${c.code}`}>{c.name} ({c.code})</option>
+                    {countries.map(c => (
+                      <option key={c.name} value={`${c.name}|${c.code}`}>
+                        {c.name} ({c.code})
+                      </option>
                     ))}
                   </select>
                   {formData.country && formData.countryCode && (
@@ -320,17 +367,27 @@ const Hero = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-amber-800 mb-1">Message</label>
-                  <textarea name="message" rows={3} value={formData.message} onChange={handleInputChange}
+                  <textarea
+                    name="message"
+                    rows={3}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-amber-300 rounded-lg bg-white text-sm resize-none"
-                    placeholder="Describe your symptoms or condition..."></textarea>
+                    placeholder="Describe your symptoms or condition..."
+                  ></textarea>
                 </div>
 
-                <button type="submit" disabled={isSubmitting}
-                  className="w-full bg-amber-500 text-amber-900 py-3 rounded-lg font-semibold hover:bg-amber-400 text-sm disabled:opacity-50">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-amber-500 text-amber-900 py-3 rounded-lg font-semibold hover:bg-amber-400 text-sm disabled:opacity-50"
+                >
                   {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
 
-                <p className="text-xs text-amber-700/70 text-center mt-2">Your information is secure and confidential</p>
+                <p className="text-xs text-amber-700/70 text-center mt-2">
+                  Your information is secure and confidential
+                </p>
               </form>
             </div>
           </div>

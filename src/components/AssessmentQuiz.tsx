@@ -1,19 +1,72 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle, Heart, Calendar, FileText, MapPin, Clock, User, Phone, Mail } from 'lucide-react';
+import {
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle,
+  Heart,
+  Calendar,
+  FileText,
+  MapPin,
+  Clock,
+  User,
+  Phone,
+  Mail
+} from 'lucide-react';
 
-const CardiacAssessment = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [contactData, setContactData] = useState({
+// --- Types ---
+type AnswerState = { [key: string]: string };
+type ContactData = {
+  name: string;
+  countryCode: string;
+  phoneNumber: string;
+  email: string;
+};
+
+type QuestionOption = {
+  value: string;
+  label: string;
+  description?: string;
+  icon?: React.ReactNode | string;
+  color: 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'purple' | 'gray';
+};
+
+type Question = {
+  id: string;
+  name: string;
+  title: string;
+  subtitle?: string;
+  icon: React.ReactNode;
+  options: QuestionOption[];
+};
+
+type Recommendation = {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+};
+
+type CountryCode = {
+  code: string;
+  country: string;
+  flag: string;
+};
+
+// --- Component ---
+const CardiacAssessment: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [answers, setAnswers] = useState<AnswerState>({});
+  const [contactData, setContactData] = useState<ContactData>({
     name: '',
     countryCode: '+91',
     phoneNumber: '',
     email: ''
   });
-  const [showForm, setShowForm] = useState(false);
-  const [showResults, setShowResults] = useState(false);
+  const [showForm, setShowForm] = useState<boolean>(false);
+  const [showResults, setShowResults] = useState<boolean>(false);
 
-  const questions = [
+  // --- Questions (same data as before) ---
+  const questions: Question[] = [
     {
       id: 'cardiac_condition',
       name: 'cardiac_condition',
@@ -91,96 +144,17 @@ const CardiacAssessment = () => {
     }
   ];
 
-  const countryCodes = [
-    // Major Countries
-    { code: '+1', country: 'US/CA', flag: '🇺🇸' },
-    { code: '+44', country: 'UK', flag: '🇬🇧' },
-    { code: '+91', country: 'IN', flag: '🇮🇳' },
-    { code: '+86', country: 'CN', flag: '🇨🇳' },
-    { code: '+49', country: 'DE', flag: '🇩🇪' },
-    { code: '+33', country: 'FR', flag: '🇫🇷' },
-    { code: '+39', country: 'IT', flag: '🇮🇹' },
-    { code: '+7', country: 'RU', flag: '🇷🇺' },
-    { code: '+81', country: 'JP', flag: '🇯🇵' },
-    { code: '+82', country: 'KR', flag: '🇰🇷' },
-    
-    // Middle East
-    { code: '+971', country: 'AE', flag: '🇦🇪' },
-    { code: '+966', country: 'SA', flag: '🇸🇦' },
-    { code: '+974', country: 'QA', flag: '🇶🇦' },
-    { code: '+965', country: 'KW', flag: '🇰🇼' },
-    { code: '+968', country: 'OM', flag: '🇴🇲' },
-    { code: '+973', country: 'BH', flag: '🇧🇭' },
-    { code: '+964', country: 'IQ', flag: '🇮🇶' },
-    { code: '+962', country: 'JO', flag: '🇯🇴' },
-    { code: '+961', country: 'LB', flag: '🇱🇧' },
-    { code: '+98', country: 'IR', flag: '🇮🇷' },
-    
-    // Africa
-    { code: '+234', country: 'NG', flag: '🇳🇬' },
-    { code: '+254', country: 'KE', flag: '🇰🇪' },
-    { code: '+27', country: 'ZA', flag: '🇿🇦' },
-    { code: '+20', country: 'EG', flag: '🇪🇬' },
-    { code: '+233', country: 'GH', flag: '🇬🇭' },
-    { code: '+251', country: 'ET', flag: '🇪🇹' },
-    { code: '+256', country: 'UG', flag: '🇺🇬' },
-    { code: '+255', country: 'TZ', flag: '🇹🇿' },
-    { code: '+212', country: 'MA', flag: '🇲🇦' },
-    { code: '+216', country: 'TN', flag: '🇹🇳' },
-    
-    // South Asia
-    { code: '+880', country: 'BD', flag: '🇧🇩' },
-    { code: '+92', country: 'PK', flag: '🇵🇰' },
-    { code: '+94', country: 'LK', flag: '🇱🇰' },
-    { code: '+977', country: 'NP', flag: '🇳🇵' },
-    { code: '+975', country: 'BT', flag: '🇧🇹' },
-    { code: '+960', country: 'MV', flag: '🇲🇻' },
-    { code: '+93', country: 'AF', flag: '🇦🇫' },
-    
-    // Southeast Asia
-    { code: '+95', country: 'MM', flag: '🇲🇲' },
-    { code: '+66', country: 'TH', flag: '🇹🇭' },
-    { code: '+60', country: 'MY', flag: '🇲🇾' },
-    { code: '+65', country: 'SG', flag: '🇸🇬' },
-    { code: '+62', country: 'ID', flag: '🇮🇩' },
-    { code: '+63', country: 'PH', flag: '🇵🇭' },
-    { code: '+84', country: 'VN', flag: '🇻🇳' },
-    { code: '+855', country: 'KH', flag: '🇰🇭' },
-    { code: '+856', country: 'LA', flag: '🇱🇦' },
-    { code: '+673', country: 'BN', flag: '🇧🇳' },
-    
-    // Europe
-    { code: '+34', country: 'ES', flag: '🇪🇸' },
-    { code: '+31', country: 'NL', flag: '🇳🇱' },
-    { code: '+41', country: 'CH', flag: '🇨🇭' },
-    { code: '+43', country: 'AT', flag: '🇦🇹' },
-    { code: '+32', country: 'BE', flag: '🇧🇪' },
-    { code: '+45', country: 'DK', flag: '🇩🇰' },
-    { code: '+46', country: 'SE', flag: '🇸🇪' },
-    { code: '+47', country: 'NO', flag: '🇳🇴' },
-    { code: '+48', country: 'PL', flag: '🇵🇱' },
-    { code: '+420', country: 'CZ', flag: '🇨🇿' },
-    
-    // Americas
-    { code: '+52', country: 'MX', flag: '🇲🇽' },
-    { code: '+55', country: 'BR', flag: '🇧🇷' },
-    { code: '+54', country: 'AR', flag: '🇦🇷' },
-    { code: '+56', country: 'CL', flag: '🇨🇱' },
-    { code: '+57', country: 'CO', flag: '🇨🇴' },
-    { code: '+51', country: 'PE', flag: '🇵🇪' },
-    { code: '+58', country: 'VE', flag: '🇻🇪' },
-    
-    // Oceania
-    { code: '+61', country: 'AU', flag: '🇦🇺' },
-    { code: '+64', country: 'NZ', flag: '🇳🇿' },
-    { code: '+679', country: 'FJ', flag: '🇫🇯' }
+  // --- Country codes ---
+  const countryCodes: CountryCode[] = [
+    { code: '+1', country: 'US/CA', flag: '🇺🇸' }, { code: '+44', country: 'UK', flag: '🇬🇧' }, { code: '+91', country: 'IN', flag: '🇮🇳' }, { code: '+86', country: 'CN', flag: '🇨🇳' }, { code: '+49', country: 'DE', flag: '🇩🇪' }, { code: '+33', country: 'FR', flag: '🇫🇷' }, { code: '+39', country: 'IT', flag: '🇮🇹' }, { code: '+7', country: 'RU', flag: '🇷🇺' }, { code: '+81', country: 'JP', flag: '🇯🇵' }, { code: '+82', country: 'KR', flag: '🇰🇷' }, { code: '+971', country: 'AE', flag: '🇦🇪' }, { code: '+966', country: 'SA', flag: '🇸🇦' }, { code: '+974', country: 'QA', flag: '🇶🇦' }, { code: '+965', country: 'KW', flag: '🇰🇼' }, { code: '+968', country: 'OM', flag: '🇴🇲' }, { code: '+973', country: 'BH', flag: '🇧🇭' }, { code: '+964', country: 'IQ', flag: '🇮🇶' }, { code: '+962', country: 'JO', flag: '🇯🇴' }, { code: '+961', country: 'LB', flag: '🇱🇧' }, { code: '+98', country: 'IR', flag: '🇮🇷' }, { code: '+234', country: 'NG', flag: '🇳🇬' }, { code: '+254', country: 'KE', flag: '🇰🇪' }, { code: '+27', country: 'ZA', flag: '🇿🇦' }, { code: '+20', country: 'EG', flag: '🇪🇬' }, { code: '+233', country: 'GH', flag: '🇬🇭' }, { code: '+251', country: 'ET', flag: '🇪🇹' }, { code: '+256', country: 'UG', flag: '🇺🇬' }, { code: '+255', country: 'TZ', flag: '🇹🇿' }, { code: '+212', country: 'MA', flag: '🇲🇦' }, { code: '+216', country: 'TN', flag: '🇹🇳' }, { code: '+880', country: 'BD', flag: '🇧🇩' }, { code: '+92', country: 'PK', flag: '🇵🇰' }, { code: '+94', country: 'LK', flag: '🇱🇰' }, { code: '+977', country: 'NP', flag: '🇳🇵' }, { code: '+975', country: 'BT', flag: '🇧🇹' }, { code: '+960', country: 'MV', flag: '🇲🇻' }, { code: '+93', country: 'AF', flag: '🇦🇫' }, { code: '+95', country: 'MM', flag: '🇲🇲' }, { code: '+66', country: 'TH', flag: '🇹🇭' }, { code: '+60', country: 'MY', flag: '🇲🇾' }, { code: '+65', country: 'SG', flag: '🇸🇬' }, { code: '+62', country: 'ID', flag: '🇮🇩' }, { code: '+63', country: 'PH', flag: '🇵🇭' }, { code: '+84', country: 'VN', flag: '🇻🇳' }, { code: '+855', country: 'KH', flag: '🇰🇭' }, { code: '+856', country: 'LA', flag: '🇱🇦' }, { code: '+673', country: 'BN', flag: '🇧🇳' }, { code: '+34', country: 'ES', flag: '🇪🇸' }, { code: '+31', country: 'NL', flag: '🇳🇱' }, { code: '+41', country: 'CH', flag: '🇨🇭' }, { code: '+43', country: 'AT', flag: '🇦🇹' }, { code: '+32', country: 'BE', flag: '🇧🇪' }, { code: '+45', country: 'DK', flag: '🇩🇰' }, { code: '+46', country: 'SE', flag: '🇸🇪' }, { code: '+47', country: 'NO', flag: '🇳🇴' }, { code: '+48', country: 'PL', flag: '🇵🇱' }, { code: '+420', country: 'CZ', flag: '🇨🇿' }, { code: '+52', country: 'MX', flag: '🇲🇽' }, { code: '+55', country: 'BR', flag: '🇧🇷' }, { code: '+54', country: 'AR', flag: '🇦🇷' }, { code: '+56', country: 'CL', flag: '🇨🇱' }, { code: '+57', country: 'CO', flag: '🇨🇴' }, { code: '+51', country: 'PE', flag: '🇵🇪' }, { code: '+58', country: 'VE', flag: '🇻🇪' }, { code: '+61', country: 'AU', flag: '🇦🇺' }, { code: '+64', country: 'NZ', flag: '🇳🇿' }, { code: '+679', country: 'FJ', flag: '🇫🇯' }
   ];
 
-  const handleAnswer = (questionId, value) => {
+  // --- Handler functions (now typed!) ---
+  const handleAnswer = (questionId: string, value: string) => {
     setAnswers({ ...answers, [questionId]: value });
   };
 
-  const handleContactChange = (field, value) => {
+  const handleContactChange = (field: keyof ContactData, value: string) => {
     setContactData({ ...contactData, [field]: value });
   };
 
@@ -210,10 +184,9 @@ const CardiacAssessment = () => {
     setShowResults(false);
   };
 
-  const generateRecommendations = () => {
-    const recommendations = [];
-    
-    // Emergency conditions
+  const generateRecommendations = (): Recommendation[] => {
+    const recommendations: Recommendation[] = [];
+
     if (answers.symptoms_severity === 'emergency' || answers.treatment_urgency === 'emergency') {
       recommendations.push({
         icon: '🚨',
@@ -223,7 +196,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // High-risk conditions
     if (answers.cardiac_condition === 'heart-attack' || answers.cardiac_condition === 'heart-failure') {
       recommendations.push({
         icon: '🏥',
@@ -233,7 +205,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // Surgical interventions
     if (answers.cardiac_condition === 'bypass-needed' || answers.cardiac_condition === 'valve-disease') {
       recommendations.push({
         icon: '⚕️',
@@ -243,7 +214,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // Risk factor management
     if (answers.risk_factors === 'diabetes-hypertension' || answers.risk_factors === 'smoking-family') {
       recommendations.push({
         icon: '📊',
@@ -253,7 +223,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // Preventive care
     if (answers.cardiac_condition === 'preventive' || answers.symptoms_severity === 'none') {
       recommendations.push({
         icon: '🛡️',
@@ -263,7 +232,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // Travel assistance
     if (answers.country_location !== 'india') {
       recommendations.push({
         icon: '✈️',
@@ -273,7 +241,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // Consultation services
     if (answers.treatment_urgency === 'consultation') {
       recommendations.push({
         icon: '👨‍⚕️',
@@ -283,7 +250,6 @@ const CardiacAssessment = () => {
       });
     }
 
-    // Always add comprehensive care
     recommendations.push({
       icon: '❤️',
       title: 'Comprehensive Heart Care',
@@ -294,23 +260,23 @@ const CardiacAssessment = () => {
     return recommendations;
   };
 
-  const handleFormSubmit = async () => {
+  // --- Form submission ---
+  const handleFormSubmit = async (): Promise<void> => {
     try {
-      // Prepare form data
       const formData = new FormData();
-      
-      // Add all quiz answers
+
       Object.entries(answers).forEach(([key, value]) => {
         formData.append(key, value);
       });
-      
-      // Add assessment summary
-      const assessmentSummary = Object.entries(answers).map(([key, value]) => {
-        const question = questions.find(q => q.id === key);
-        const option = question?.options.find(opt => opt.value === value);
-        return `${question?.title}: ${option?.label || value}`;
-      }).join(' | ');
-      
+
+      const assessmentSummary = Object.entries(answers)
+        .map(([key, value]) => {
+          const question = questions.find(q => q.id === key);
+          const option = question?.options.find(opt => opt.value === value);
+          return `${question?.title}: ${option?.label || value}`;
+        })
+        .join(' | ');
+
       formData.append('assessment_summary', assessmentSummary);
       formData.append('submission_date', new Date().toISOString());
       formData.append('contact_name', contactData.name);
@@ -319,11 +285,10 @@ const CardiacAssessment = () => {
       formData.append('contact_full_phone', `${contactData.countryCode} ${contactData.phoneNumber}`);
       formData.append('contact_email', contactData.email);
 
-      // Submit to Formester
-      const response = await fetch('https://app.formester.com/forms/DZoBSP5fk/submissions', {
-        method: 'POST',
-        body: formData
-      });
+      const response = await fetch(
+        'https://app.formester.com/forms/DZoBSP5fk/submissions',
+        { method: 'POST', body: formData }
+      );
 
       if (response.ok) {
         setShowResults(true);
@@ -332,17 +297,16 @@ const CardiacAssessment = () => {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      // Still show results for demo purposes
-      setShowResults(true);
+      setShowResults(true); // for demo
     }
   };
 
   const isFormValid = contactData.name.trim() && contactData.phoneNumber.trim() && contactData.email.trim();
 
-  // Results View
+  // --- Result screen ---
   if (showResults) {
     const recommendations = generateRecommendations();
-    
+    // ... (same JSX as before for results)
     return (
       <section className="py-16 bg-warm-ivory">
         <div className="container mx-auto px-6">
@@ -352,13 +316,16 @@ const CardiacAssessment = () => {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-                <h2 className="text-3xl font-bold text-rich-chocolate mb-3">Cardiac Assessment Submitted Successfully!</h2>
-                <p className="text-coffee-bean">Thank you for completing the cardiac assessment. Our cardiology team will contact you within 24 hours with your personalized heart care plan.</p>
+                <h2 className="text-3xl font-bold text-rich-chocolate mb-3">
+                  Cardiac Assessment Submitted Successfully!
+                </h2>
+                <p className="text-coffee-bean">
+                  Thank you for completing the cardiac assessment. Our cardiology team will contact you within 24 hours with your personalized heart care plan.
+                </p>
               </div>
-
               <div className="space-y-4 mb-8">
                 {recommendations.map((rec, index) => {
-                  const colorClasses = {
+                  const colorClasses: { [key: string]: string } = {
                     red: 'bg-red-50 border-red-200 text-red-800',
                     green: 'bg-green-50 border-green-200 text-green-800',
                     blue: 'bg-blue-50 border-blue-200 text-blue-800',
@@ -366,9 +333,11 @@ const CardiacAssessment = () => {
                     purple: 'bg-purple-50 border-purple-200 text-purple-800',
                     artemis: 'bg-soft-beige border-golden-honey text-rich-chocolate'
                   };
-                  
                   return (
-                    <div key={index} className={`border-2 rounded-xl p-6 ${colorClasses[rec.color]} transition-all duration-300`}>
+                    <div
+                      key={index}
+                      className={`border-2 rounded-xl p-6 ${colorClasses[rec.color]} transition-all duration-300`}
+                    >
                       <div className="flex items-start">
                         <div className="text-3xl mr-4">{rec.icon}</div>
                         <div>
@@ -380,9 +349,8 @@ const CardiacAssessment = () => {
                   );
                 })}
               </div>
-
               <div className="text-center">
-                <button 
+                <button
                   onClick={resetQuiz}
                   className="bg-golden-honey text-rich-chocolate px-8 py-4 rounded-lg font-semibold hover:bg-deep-copper transition-colors shadow-lg"
                 >
@@ -396,7 +364,7 @@ const CardiacAssessment = () => {
     );
   }
 
-  // Main form wrapper for entire quiz flow
+  // --- Main component (quiz) JSX ---
   return (
     <section id="cardiac-assessment" className="py-16 bg-warm-ivory">
       <div className="container mx-auto px-6">
@@ -405,10 +373,8 @@ const CardiacAssessment = () => {
             <h2 className="text-3xl font-bold text-rich-chocolate mb-3">Cardiac Care Assessment</h2>
             <p className="text-coffee-bean">Help us understand your heart condition so we can provide the most appropriate cardiac care</p>
           </div>
-
           <div className="bg-cream-white rounded-2xl p-8 border border-caramel/20 shadow-lg">
-            
-            {/* Contact Form View */}
+            {/* Contact Form */}
             {showForm ? (
               <div>
                 <div className="mb-8">
@@ -420,40 +386,35 @@ const CardiacAssessment = () => {
                     <div className="bg-golden-honey h-2 rounded-full w-full" />
                   </div>
                 </div>
-
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-rich-chocolate mb-3">Contact Information</h3>
                   <p className="text-coffee-bean">Please provide your contact details to receive your personalized cardiac care plan</p>
                 </div>
-
                 <div className="space-y-6 mb-8">
                   <div>
                     <label className="flex items-center text-rich-chocolate font-semibold mb-3">
-                      <User className="w-5 h-5 mr-2" />
-                      Full Name *
+                      <User className="w-5 h-5 mr-2" /> Full Name *
                     </label>
                     <input
                       type="text"
                       value={contactData.name}
-                      onChange={(e) => handleContactChange('name', e.target.value)}
+                      onChange={e => handleContactChange('name', e.target.value)}
                       className="w-full p-4 border-2 border-caramel/20 rounded-lg focus:border-golden-honey focus:outline-none transition-colors"
                       placeholder="Enter your full name"
                       required
                     />
                   </div>
-
                   <div>
                     <label className="flex items-center text-rich-chocolate font-semibold mb-3">
-                      <Phone className="w-5 h-5 mr-2" />
-                      Contact Number *
+                      <Phone className="w-5 h-5 mr-2" /> Contact Number *
                     </label>
                     <div className="flex">
                       <select
                         value={contactData.countryCode}
-                        onChange={(e) => handleContactChange('countryCode', e.target.value)}
+                        onChange={e => handleContactChange('countryCode', e.target.value)}
                         className="p-4 border-2 border-caramel/20 rounded-l-lg focus:border-golden-honey focus:outline-none bg-white"
                       >
-                        {countryCodes.map((country) => (
+                        {countryCodes.map(country => (
                           <option key={country.code} value={country.code}>
                             {country.flag} {country.code} {country.country}
                           </option>
@@ -462,30 +423,27 @@ const CardiacAssessment = () => {
                       <input
                         type="tel"
                         value={contactData.phoneNumber}
-                        onChange={(e) => handleContactChange('phoneNumber', e.target.value)}
+                        onChange={e => handleContactChange('phoneNumber', e.target.value)}
                         className="flex-1 p-4 border-2 border-l-0 border-caramel/20 rounded-r-lg focus:border-golden-honey focus:outline-none"
                         placeholder="Enter phone number"
                         required
                       />
                     </div>
                   </div>
-
                   <div>
                     <label className="flex items-center text-rich-chocolate font-semibold mb-3">
-                      <Mail className="w-5 h-5 mr-2" />
-                      Email Address *
+                      <Mail className="w-5 h-5 mr-2" /> Email Address *
                     </label>
                     <input
                       type="email"
                       value={contactData.email}
-                      onChange={(e) => handleContactChange('email', e.target.value)}
+                      onChange={e => handleContactChange('email', e.target.value)}
                       className="w-full p-4 border-2 border-caramel/20 rounded-lg focus:border-golden-honey focus:outline-none transition-colors"
                       placeholder="Enter your email address"
                       required
                     />
                   </div>
                 </div>
-
                 <div className="mb-8 p-4 bg-soft-beige rounded-lg">
                   <h4 className="font-semibold text-rich-chocolate mb-3">Cardiac Assessment Summary:</h4>
                   <div className="text-sm text-coffee-bean space-y-1">
@@ -501,7 +459,6 @@ const CardiacAssessment = () => {
                     })}
                   </div>
                 </div>
-
                 <div className="flex justify-between">
                   <button
                     type="button"
@@ -511,7 +468,6 @@ const CardiacAssessment = () => {
                     <ArrowLeft className="w-4 h-4" />
                     <span>Previous</span>
                   </button>
-
                   <button
                     type="button"
                     onClick={handleFormSubmit}
@@ -528,21 +484,26 @@ const CardiacAssessment = () => {
                 </div>
               </div>
             ) : (
-              /* Quiz Questions View */
+              // Quiz View
               <>
                 <div className="mb-8">
                   <div className="flex justify-between text-sm text-coffee-bean mb-2">
-                    <span>Question {currentStep + 1} of {questions.length}</span>
-                    <span>{Math.round(((currentStep + 1) / questions.length) * 100)}% Complete</span>
+                    <span>
+                      Question {currentStep + 1} of {questions.length}
+                    </span>
+                    <span>
+                      {Math.round(((currentStep + 1) / questions.length) * 100)}% Complete
+                    </span>
                   </div>
                   <div className="w-full bg-caramel/20 rounded-full h-2">
-                    <div 
+                    <div
                       className="bg-golden-honey h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+                      style={{
+                        width: `${((currentStep + 1) / questions.length) * 100}%`
+                      }}
                     />
                   </div>
                 </div>
-
                 <div className="mb-8">
                   <div className="flex items-center space-x-3 mb-6">
                     <div className="w-12 h-12 bg-golden-honey rounded-full flex items-center justify-center text-rich-chocolate font-bold text-lg">
@@ -552,15 +513,17 @@ const CardiacAssessment = () => {
                       <h3 className="text-xl font-semibold text-rich-chocolate">
                         {questions[currentStep].title}
                       </h3>
-                      <p className="text-coffee-bean text-sm">{questions[currentStep].subtitle}</p>
+                      <p className="text-coffee-bean text-sm">
+                        {questions[currentStep].subtitle}
+                      </p>
                     </div>
                   </div>
-
                   <fieldset className="space-y-3">
                     <legend className="sr-only">{questions[currentStep].title}</legend>
-                    {questions[currentStep].options.map((option) => {
-                      const isSelected = answers[questions[currentStep].id] === option.value;
-                      const colorClasses = {
+                    {questions[currentStep].options.map(option => {
+                      const isSelected =
+                        answers[questions[currentStep].id] === option.value;
+                      const colorClasses: { [key: string]: string } = {
                         green: 'bg-green-100 text-green-700',
                         yellow: 'bg-yellow-100 text-yellow-700',
                         orange: 'bg-orange-100 text-orange-700',
@@ -569,7 +532,6 @@ const CardiacAssessment = () => {
                         purple: 'bg-purple-100 text-purple-700',
                         gray: 'bg-gray-100 text-gray-700'
                       };
-
                       return (
                         <label
                           key={option.value}
@@ -585,19 +547,27 @@ const CardiacAssessment = () => {
                               name={questions[currentStep].name}
                               value={option.value}
                               checked={isSelected}
-                              onChange={() => handleAnswer(questions[currentStep].id, option.value)}
+                              onChange={() =>
+                                handleAnswer(questions[currentStep].id, option.value)
+                              }
                               className="sr-only"
                               required
                             />
                             {option.icon && (
-                              <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 font-semibold ${
-                                isSelected ? 'bg-golden-honey text-rich-chocolate' : colorClasses[option.color]
-                              }`}>
+                              <div
+                                className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 font-semibold ${
+                                  isSelected
+                                    ? 'bg-golden-honey text-rich-chocolate'
+                                    : colorClasses[option.color]
+                                }`}
+                              >
                                 {option.icon}
                               </div>
                             )}
                             <div className="flex-1">
-                              <h4 className="font-semibold text-rich-chocolate">{option.label}</h4>
+                              <h4 className="font-semibold text-rich-chocolate">
+                                {option.label}
+                              </h4>
                               {option.description && (
                                 <p className="text-coffee-bean text-sm">{option.description}</p>
                               )}
@@ -611,7 +581,6 @@ const CardiacAssessment = () => {
                     })}
                   </fieldset>
                 </div>
-
                 <div className="flex justify-between">
                   <button
                     type="button"
@@ -626,7 +595,6 @@ const CardiacAssessment = () => {
                     <ArrowLeft className="w-4 h-4" />
                     <span>Previous</span>
                   </button>
-
                   <button
                     type="button"
                     onClick={nextStep}
@@ -637,7 +605,11 @@ const CardiacAssessment = () => {
                         : 'bg-caramel/30 text-caramel cursor-not-allowed'
                     }`}
                   >
-                    <span>{currentStep === questions.length - 1 ? 'Continue to Contact Form' : 'Next'}</span>
+                    <span>
+                      {currentStep === questions.length - 1
+                        ? 'Continue to Contact Form'
+                        : 'Next'}
+                    </span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
