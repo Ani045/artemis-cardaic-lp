@@ -146,7 +146,17 @@ const CardiacAssessment: React.FC = () => {
 
   // --- Country codes ---
   const countryCodes: CountryCode[] = [
-    { code: '+1', country: 'US/CA', flag: '🇺🇸' }, { code: '+44', country: 'UK', flag: '🇬🇧' }, { code: '+91', country: 'IN', flag: '🇮🇳' }, { code: '+86', country: 'CN', flag: '🇨🇳' }, { code: '+49', country: 'DE', flag: '🇩🇪' }, { code: '+33', country: 'FR', flag: '🇫🇷' }, { code: '+39', country: 'IT', flag: '🇮🇹' }, { code: '+7', country: 'RU', flag: '🇷🇺' }, { code: '+81', country: 'JP', flag: '🇯🇵' }, { code: '+82', country: 'KR', flag: '🇰🇷' }, { code: '+971', country: 'AE', flag: '🇦🇪' }, { code: '+966', country: 'SA', flag: '🇸🇦' }, { code: '+974', country: 'QA', flag: '🇶🇦' }, { code: '+965', country: 'KW', flag: '🇰🇼' }, { code: '+968', country: 'OM', flag: '🇴🇲' }, { code: '+973', country: 'BH', flag: '🇧🇭' }, { code: '+964', country: 'IQ', flag: '🇮🇶' }, { code: '+962', country: 'JO', flag: '🇯🇴' }, { code: '+961', country: 'LB', flag: '🇱🇧' }, { code: '+98', country: 'IR', flag: '🇮🇷' }, { code: '+234', country: 'NG', flag: '🇳🇬' }, { code: '+254', country: 'KE', flag: '🇰🇪' }, { code: '+27', country: 'ZA', flag: '🇿🇦' }, { code: '+20', country: 'EG', flag: '🇪🇬' }, { code: '+233', country: 'GH', flag: '🇬🇭' }, { code: '+251', country: 'ET', flag: '🇪🇹' }, { code: '+256', country: 'UG', flag: '🇺🇬' }, { code: '+255', country: 'TZ', flag: '🇹🇿' }, { code: '+212', country: 'MA', flag: '🇲🇦' }, { code: '+216', country: 'TN', flag: '🇹🇳' }, { code: '+880', country: 'BD', flag: '🇧🇩' }, { code: '+92', country: 'PK', flag: '🇵🇰' }, { code: '+94', country: 'LK', flag: '🇱🇰' }, { code: '+977', country: 'NP', flag: '🇳🇵' }, { code: '+975', country: 'BT', flag: '🇧🇹' }, { code: '+960', country: 'MV', flag: '🇲🇻' }, { code: '+93', country: 'AF', flag: '🇦🇫' }, { code: '+95', country: 'MM', flag: '🇲🇲' }, { code: '+66', country: 'TH', flag: '🇹🇭' }, { code: '+60', country: 'MY', flag: '🇲🇾' }, { code: '+65', country: 'SG', flag: '🇸🇬' }, { code: '+62', country: 'ID', flag: '🇮🇩' }, { code: '+63', country: 'PH', flag: '🇵🇭' }, { code: '+84', country: 'VN', flag: '🇻🇳' }, { code: '+855', country: 'KH', flag: '🇰🇭' }, { code: '+856', country: 'LA', flag: '🇱🇦' }, { code: '+673', country: 'BN', flag: '🇧🇳' }, { code: '+34', country: 'ES', flag: '🇪🇸' }, { code: '+31', country: 'NL', flag: '🇳🇱' }, { code: '+41', country: 'CH', flag: '🇨🇭' }, { code: '+43', country: 'AT', flag: '🇦🇹' }, { code: '+32', country: 'BE', flag: '🇧🇪' }, { code: '+45', country: 'DK', flag: '🇩🇰' }, { code: '+46', country: 'SE', flag: '🇸🇪' }, { code: '+47', country: 'NO', flag: '🇳🇴' }, { code: '+48', country: 'PL', flag: '🇵🇱' }, { code: '+420', country: 'CZ', flag: '🇨🇿' }, { code: '+52', country: 'MX', flag: '🇲🇽' }, { code: '+55', country: 'BR', flag: '🇧🇷' }, { code: '+54', country: 'AR', flag: '🇦🇷' }, { code: '+56', country: 'CL', flag: '🇨🇱' }, { code: '+57', country: 'CO', flag: '🇨🇴' }, { code: '+51', country: 'PE', flag: '🇵🇪' }, { code: '+58', country: 'VE', flag: '🇻🇪' }, { code: '+61', country: 'AU', flag: '🇦🇺' }, { code: '+64', country: 'NZ', flag: '🇳🇿' }, { code: '+679', country: 'FJ', flag: '🇫🇯' }
+    { code: '+679', country: 'Fiji', flag: '🇫🇯' },      
+  { code: '+233', country: 'Ghana', flag: '🇬🇭' },    
+  { code: '+263', country: 'Zimbabwe', flag: '🇿🇼' }, 
+  { code: '+256', country: 'Uganda', flag: '🇺🇬' },   
+  { code: '+260', country: 'Zambia', flag: '🇿🇲' },   
+  { code: '+254', country: 'Kenya', flag: '🇰🇪' },    
+  { code: '+61', country: 'Australia', flag: '🇦🇺' },
+    { code: '+1', country: 'US/CA', flag: '🇺🇸' },
+     { code: '+44', country: 'UK', flag: '🇬🇧' },
+      { code: '+91', country: 'IN', flag: '🇮🇳' },
+       { code: '+86', country: 'CN', flag: '🇨🇳' }, { code: '+49', country: 'DE', flag: '🇩🇪' }, { code: '+33', country: 'FR', flag: '🇫🇷' }, { code: '+39', country: 'IT', flag: '🇮🇹' }, { code: '+7', country: 'RU', flag: '🇷🇺' }, { code: '+81', country: 'JP', flag: '🇯🇵' }, { code: '+82', country: 'KR', flag: '🇰🇷' }, { code: '+971', country: 'AE', flag: '🇦🇪' }, { code: '+966', country: 'SA', flag: '🇸🇦' }, { code: '+974', country: 'QA', flag: '🇶🇦' }, { code: '+965', country: 'KW', flag: '🇰🇼' }, { code: '+968', country: 'OM', flag: '🇴🇲' }, { code: '+973', country: 'BH', flag: '🇧🇭' }, { code: '+964', country: 'IQ', flag: '🇮🇶' } , { code: 'Other', country: 'Other', flag: '🇮🇳' },
   ];
 
   // --- Handler functions (now typed!) ---
@@ -308,7 +318,7 @@ const CardiacAssessment: React.FC = () => {
     const recommendations = generateRecommendations();
     // ... (same JSX as before for results)
     return (
-      <section className="py-16 bg-warm-ivory">
+      <section className="py-8 bg-warm-ivory">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="bg-cream-white rounded-2xl p-8 border border-caramel/20 shadow-lg">
@@ -366,7 +376,7 @@ const CardiacAssessment: React.FC = () => {
 
   // --- Main component (quiz) JSX ---
   return (
-    <section id="cardiac-assessment" className="py-16 bg-warm-ivory">
+    <section id="cardiac-assessment" className="py-8 bg-warm-ivory">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
