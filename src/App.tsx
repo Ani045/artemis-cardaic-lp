@@ -9,6 +9,7 @@ import DoctorProfiles from './components/DoctorProfiles';
 import Testimonials from './components/Testimonials';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
+import CardiacAssessment from './components/AssessmentQuiz';
 import MobileFooter from './components/MobileFooter';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <div className="min-h-screen bg-cream-white">
       <Header />
       <Hero />
-      <AssessmentQuiz />
+     < CardiacAssessment/>
       <AboutSection />
       <ServicesGrid />
       <JourneySection />

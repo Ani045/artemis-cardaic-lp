@@ -23,8 +23,82 @@ type ConsultationPopupProps = {
 const countries = [
   { name: 'Afghanistan', code: '+93' },
   { name: 'Algeria', code: '+213' },
-  // ...rest of your countries
-  { name: 'Vietnam', code: '+84' }
+  { name: 'Argentina', code: '+54' },
+  { name: 'Australia', code: '+61' },
+  { name: 'Austria', code: '+43' },
+  { name: 'Bahrain', code: '+973' },
+  { name: 'Bangladesh', code: '+880' },
+  { name: 'Belgium', code: '+32' },
+  { name: 'Belize', code: '+501' },
+  { name: 'Cambodia', code: '+855' },
+  { name: 'Cameroon', code: '+237' },
+  { name: 'Canada', code: '+1' },
+  { name: 'Croatia', code: '+385' },
+  { name: 'Cuba', code: '+53' },
+  { name: 'Czech Republic', code: '+420' },
+  { name: 'Fiji', code: '+679' },
+  { name: 'Finland', code: '+358' },
+  { name: 'France', code: '+33' },
+  { name: 'Germany', code: '+49' },
+  { name: 'Ghana', code: '+233' },
+  { name: 'Greece', code: '+30' },
+  { name: 'Guatemala', code: '+502' },
+  { name: 'Honduras', code: '+504' },
+  { name: 'Hong Kong', code: '+852' },
+  { name: 'Hungary', code: '+36' },
+  { name: 'India', code: '+91' },
+  { name: 'Indonesia', code: '+62' },
+  { name: 'Ireland', code: '+353' },
+  { name: 'Jordan', code: '+962' },
+  { name: 'Kazakhstan', code: '+7' },
+  { name: 'Kenya', code: '+254' },
+  { name: 'Kuwait', code: '+965' },
+  { name: 'Kyrgyzstan', code: '+996' },
+  { name: 'Laos', code: '+856' },
+  { name: 'Lebanon', code: '+961' },
+  { name: 'Libya', code: '+218' },
+  { name: 'Luxembourg', code: '+352' },
+  { name: 'Mexico', code: '+52' },
+  { name: 'Mongolia', code: '+976' },
+  { name: 'Morocco', code: '+212' },
+  { name: 'Pakistan', code: '+92' },
+  { name: 'Palau', code: '+680' },
+  { name: 'Panama', code: '+507' },
+  { name: 'Papua New Guinea', code: '+675' },
+  { name: 'Paraguay', code: '+595' },
+  { name: 'Peru', code: '+51' },
+  { name: 'Philippines', code: '+63' },
+  { name: 'Poland', code: '+48' },
+  { name: 'Portugal', code: '+351' },
+  { name: 'Qatar', code: '+974' },
+  { name: 'Romania', code: '+40' },
+  { name: 'Russia', code: '+7' },
+  { name: 'Rwanda', code: '+250' },
+  { name: 'Samoa', code: '+685' },
+  { name: 'Saudi Arabia', code: '+966' },
+  { name: 'Solomon Islands', code: '+677' },
+  { name: 'South Africa', code: '+27' },
+  { name: 'South Korea', code: '+82' },
+  { name: 'Spain', code: '+34' },
+  { name: 'Sri Lanka', code: '+94' },
+  { name: 'Sudan', code: '+249' },
+  { name: 'Sweden', code: '+46' },
+  { name: 'Tonga', code: '+676' },
+  { name: 'Tunisia', code: '+216' },
+  { name: 'Turkey', code: '+90' },
+  { name: 'Turkmenistan', code: '+993' },
+  { name: 'Uganda', code: '+256' },
+  { name: 'Ukraine', code: '+380' },
+  { name: 'United Arab Emirates', code: '+971' },
+  { name: 'United Kingdom', code: '+44' },
+  { name: 'United States', code: '+1' },
+  { name: 'Uruguay', code: '+598' },
+  { name: 'Uzbekistan', code: '+998' },
+  { name: 'Vanuatu', code: '+678' },
+  { name: 'Venezuela', code: '+58' },
+  { name: 'Vietnam', code: '+84' },
+  { name: 'Zimbabwe', code: '+263' },
+  { name: 'Zambia', code: '+260' }
 ];
 
 const ConsultationPopup: FC<ConsultationPopupProps> = ({
@@ -214,12 +288,10 @@ const ConsultationPopup: FC<ConsultationPopupProps> = ({
           <p className="text-amber-800 text-sm">{subtitle}</p>
         </div>
 
-        <form
-          acceptCharset="UTF-8"
-          action="https://app.formester.com/forms/74CaRVAvR/submissions"
-          method="POST"
+        <form accept-charset='UTF-8' action='https://app.formester.com/forms/dFRtlEOCd/submissions' method='POST'
+          
           className="space-y-4"
-          onSubmit={handleSubmit}
+     
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>

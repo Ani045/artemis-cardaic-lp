@@ -353,7 +353,7 @@ const Hero: React.FC = () => {
                 <p className="text-amber-800 text-sm">Connect with our heart specialists today</p>
               </div>
 
-              <form className="space-y-4" onSubmit={handleSubmit}>
+              <form className="space-y-4"  accept-charset='UTF-8' action='https://app.formester.com/forms/dFRtlEOCd/submissions' method='POST'> 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-amber-800 mb-1">Name *</label>
